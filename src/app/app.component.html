@@ -1,27 +1,17 @@
 <mat-toolbar class="custom-toolbar" >
-
       <mat-icon >menu</mat-icon>
-     
       <div>
-     
-      <button mat-button [matMenuTriggerFor]="menuAVI" style="color: white;" >AVI Application</button>
-     
+      <button mat-button [matMenuTriggerFor]="menuAVI" style="color: white;" >AVI Application</button> 
       </div>
-     
-     </mat-toolbar>
-     
-     
-     
-     <mat-menu #menuAVI="matMenu">
-     
+     </mat-toolbar>    
+     <mat-menu #menuAVI="matMenu"> 
       <button mat-menu-item routerLink="/usuarios" >Usuarios</button>
       <button mat-menu-item routerLink="/roles">Roles</button>
       <button mat-menu-item routerLink="/prendas">Prendas</button>
       <button mat-menu-item routerLink="/conjuntos">Conjuntos</button>
-     
-
+      <button mat-menu-item routerLink="/recomendaciones">Recomendaciones</button>
+      <button mat-menu-item routerLink="/recomendaciones/nuevo">Registrar Recomendacion</button>
      </mat-menu>
-     
      <router-outlet></router-outlet>
      
      

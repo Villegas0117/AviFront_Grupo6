@@ -1,0 +1,45 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>Registro de Recomendaciones</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" >
+        <mat-label>Código Recomendación</mat-label>
+        <input matInput formControlName="hcodigoRecomendacion" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width" >
+        <mat-label>Código Usuario</mat-label>
+        <input matInput formControlName="hcodigoUsuario" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripción</mat-label>
+        <input matInput placeholder="Recomendacion" formControlName="hdescripcion" />
+      </mat-form-field>
+      <br />
+      
+      <!-- Selector de fecha de creación -->
+      <mat-form-field>
+        <mat-label>Choose a date creation</mat-label>
+        <input matInput [matDatepicker]="pickerCreation" formControlName="hfechaCreacion"/>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerCreation"></mat-datepicker-toggle>
+        <mat-datepicker #pickerCreation></mat-datepicker>
+      </mat-form-field>
+      <br />
+
+      <!-- Selector de fecha de modificación -->
+      <mat-form-field>
+        <mat-label>Choose a date modification</mat-label>
+        <input matInput [matDatepicker]="pickerModification" formControlName="hfechaModificacion"/>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerModification"></mat-datepicker-toggle>
+        <mat-datepicker #pickerModification></mat-datepicker>
+      </mat-form-field>   
+      
+      <div> 
+        <button mat-flat-button class="custom-button">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>
