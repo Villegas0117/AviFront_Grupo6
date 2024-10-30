@@ -1,0 +1,67 @@
+<div class="container" [ngClass]="{ 'edit-mode': edicion, 'register-mode': !edicion }" style="text-align: center; margin: 2%">
+
+    <div> <h1>{{ edicion ? 'Actualizar Vehículo' : 'Registrar Vehículo' }}</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)=" insertar()" class="galeria-form">
+
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hcodigo" readonly />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Galeria" formControlName="hnombre" />
+          <mat-error *ngIf="form.controls['hnombre'].hasError('required')">
+            El nombre es obligatoria
+          </mat-error>
+        </mat-form-field>
+        <br />
+        
+        
+        <mat-form-field>
+          <mat-label>fecha creacion</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="hfechacreacion"/>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br>
+
+
+        <mat-form-field>
+            <mat-label>fecha modificacion</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="hfechamodificacion"/>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+          <br>
+          <mat-form-field class="example-full-width">
+            <mat-label>ID usuario</mat-label>
+            <input matInput placeholder="Galeria" formControlName="hidusuario" type="number" />
+            <mat-error *ngIf="form.controls['hidusuario'].hasError('pattern')">
+              Solo se permiten números.
+            </mat-error>
+          </mat-form-field>
+  
+          <div class="button-container">
+            <button
+              mat-flat-button
+              color="primary"
+              type="submit"
+              [disabled]="!form.valid"
+            >
+              {{ edicion ? 'Actualizar' : 'Registrar' }}
+            </button>
+          </div>
+      </form>
+    </div>
+  </div>

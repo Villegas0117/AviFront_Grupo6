@@ -5,7 +5,9 @@
       <div>
      
       <button mat-button [matMenuTriggerFor]="menuAVI" style="color: white;" >AVI Application</button>
-     
+      <button mat-button [matMenuTriggerFor]="menuAVI2" style="color: white">
+            Galeria
+          </button>
       </div>
      
      </mat-toolbar>
@@ -19,6 +21,14 @@
       <button mat-menu-item routerLink="/prendas">Prendas</button>
       <button mat-menu-item routerLink="/conjuntos">Conjuntos</button>
      
+
+     </mat-menu>
+
+          
+     <mat-menu #menuAVI2="matMenu">
+     
+      <button mat-menu-item routerLink="/galerias">Listar</button>
+      <button mat-menu-item routerLink="/galerias/listar">Registrar</button>
 
      </mat-menu>
      
