@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { Recomendaciones } from '../models/Recomendaciones';
 import { Subject } from 'rxjs';
+import { Tendencia } from '../models/Tendencia';
+
 //llamar la url de localhost (api)
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
 })
-export class RecomendacionesService {
+export class TendenciasService {
 // declarar variable para la coonsulta (debo verificar ruta en controladores de backend (ruta del back))
-  private url =  `${base_url}/recomendaciones`;
-  private listaCambio = new Subject<Recomendaciones[]>();
+  private url =  `${base_url}/tendencias`;
+  private listaCambio = new Subject<Tendencia[]>();
 
+  
   constructor(private http: HttpClient) { }
-
-//hacer perición con el http client
   list(){
-    return this.http.get<Recomendaciones[]>(this.url);
+    return this.http.get<Tendencia[]>(this.url);
   }
-  insert(r: Recomendaciones) {
-    return this.http.post(this.url, r);
+  insert(v: Tendencia) {
+    return this.http.post(this.url, v);
   }
 
   getList() {
     return this.listaCambio.asObservable();
   }
 
-  setList(listaNueva: Recomendaciones[]) {
+  setList(listaNueva: Tendencia[]) {
     this.listaCambio.next(listaNueva);
   }
 
@@ -36,11 +36,11 @@ export class RecomendacionesService {
   }
 
   listId(id: number) {
-    return this.http.get<Recomendaciones>(`${this.url}/${id}`);
+    return this.http.get<Tendencia>(`${this.url}/${id}`);
   }
 
-  update(reh: Recomendaciones) {
-    return this.http.put(this.url, reh);
+  update(teh: Tendencia) {
+    return this.http.put(this.url, teh);
   }
 }
 

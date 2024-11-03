@@ -6,15 +6,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Recomendaciones } from '../../../models/Recomendaciones';
 import { RecomendacionesService } from '../../../services/recomendaciones.service';
+import { Tendencia } from '../../../models/Tendencia';
+import { Usuarios } from '../../../models/Usuarios';
+import { UsuarioService } from '../../../services/usuario.service';
+import { TendenciasService } from '../../../services/tendencias.service';
 @Component({
   selector: 'app-crear-editar-recomendaciones',
   standalone: true,
@@ -25,15 +27,15 @@ import { RecomendacionesService } from '../../../services/recomendaciones.servic
     MatNativeDateModule,
     MatButtonModule,
     ReactiveFormsModule,
-    CommonModule,
   ],
   templateUrl: './crear-editar-recomendaciones.component.html',
   styleUrl: './crear-editar-recomendaciones.component.css'
 })
 export class CrearEditarRecomendacionesComponent implements OnInit{
   form: FormGroup = new FormGroup({});
+  listaTendencias: Tendencia[]=[];
+  listaUsuarios: Usuarios[]=[];
   recomendacion: Recomendaciones = new Recomendaciones();
-
   id: number = 0;
   edicion: boolean = false;
 
@@ -41,60 +43,38 @@ export class CrearEditarRecomendacionesComponent implements OnInit{
     private rS: RecomendacionesService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private uS: UsuarioService,
+    private tS: TendenciasService,
   ) {}
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      //trae los datos
-      this.init();
-    });
-
     this.form = this.formBuilder.group({
-      hcodigoRecomendacion: [''],
-      hcodigoUsuario: [''],
+      hUsuario: ['', Validators.required],
+      hTendencia: ['', Validators.required],
       hdescripcion: ['', Validators.required],
       hfechaCreacion: ['', Validators.required],
       hfechaModificacion: ['', Validators.required],
     });
+    this.uS.list().subscribe((data) => {
+      this.listaUsuarios = data;
+    });
+    this.tS.list().subscribe((data) => {
+      this.listaTendencias = data;
+    });
   }
   insertar(): void {
     if (this.form.valid) {
-      this.recomendacion.id_Recomendacion = this.form.value.hcodigoRecomendacion;
-      this.recomendacion.id_usuario = this.form.value.hcodigoUsuario;
       this.recomendacion.descripcion = this.form.value.hdescripcion;
-      this.recomendacion.fecha_Creacion = this.form.value.hfechaCreacion;
+      this.recomendacion.fecha_creacion = this.form.value.hfechaCreacion;
       this.recomendacion.fecha_modificacion = this.form.value.hfechaModificacion;
-      if (this.edicion) {
-        this.rS.update(this.recomendacion).subscribe((data) => {
+      // Asigna el idUsuario y idTendencia
+      this.recomendacion.id_Usuario = this.form.value.hUsuario;
+      this.recomendacion.id_Tendencia = this.form.value.hTendencia;
+      this.rS.insert(this.recomendacion).subscribe((data) => {
           this.rS.list().subscribe((data) => {
             this.rS.setList(data);
           });
         });
-      } else {
-        this.rS.insert(this.recomendacion).subscribe((data) => {
-          this.rS.list().subscribe((data) => {
-            this.rS.setList(data);
-          });
-        });
-      }
-    }
-    this.router.navigate(['recomendaciones']);
-  }
-
-  init() {
-    if (this.edicion) {
-      this.rS.listId(this.id).subscribe((data) => {
-        
-        this.form = new FormGroup({
-          hcodigoRecomendacion: new FormControl(data.id_Recomendacion),
-          hcodigoUsuario: new FormControl(data.id_usuario),
-          hdescripcion: new FormControl(data.descripcion),
-          hfechaCreacion: new FormControl(data.fecha_modificacion),
-          hfechaModificacion: new FormControl(data.fecha_modificacion),
-        });
-      });
-    }
+        this.router.navigate(['recomendaciones']);
+    } 
   }
 }
