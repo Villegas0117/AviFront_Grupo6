@@ -44,12 +44,14 @@
         </mat-form-field>
 
           <br>
-          <mat-form-field class="example-full-width">
-            <mat-label>ID usuario</mat-label>
-            <input matInput placeholder="Galeria" formControlName="hidusuario" type="number" />
-            <mat-error *ngIf="form.controls['hidusuario'].hasError('pattern')">
-              Solo se permiten números.
-            </mat-error>
+          
+          <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <mat-select formControlName="hidusuario" >
+              @for (u of listausuarios; track u) {
+              <mat-option [value]="u.id">{{ u.username }}</mat-option>
+              }
+            </mat-select>
           </mat-form-field>
   
           <div class="button-container">

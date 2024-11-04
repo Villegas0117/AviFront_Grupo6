@@ -1,3 +1,5 @@
+import { Usuarios } from "./Usuarios"
+
 export class Galerias{
     idGaleria:number=0
 
@@ -7,6 +9,6 @@ export class Galerias{
 
     fechaModificacion:Date=new Date(Date.now())
 
-    idUsuario:number=0
+    idUsuario:Usuarios= new Usuarios()
 
 }

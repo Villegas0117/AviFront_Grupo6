@@ -16,6 +16,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Galerias } from '../../../models/Galerias';
 import { GaleriaService } from '../../../services/galeria.service';
 import { CommonModule } from '@angular/common';
+import { Usuarios } from '../../../models/Usuarios';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-creareditargaleria',
@@ -35,15 +37,17 @@ import { CommonModule } from '@angular/common';
 export class CreareditargaleriaComponent {
   form: FormGroup = new FormGroup({});
   galeria: Galerias = new Galerias();
+  listausuarios: Usuarios[]= [];
 
   id: number = 0;
   edicion: boolean = false;
 
   constructor(
-    private vS: GaleriaService,
+    private gS: GaleriaService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private uS: UsuarioService
   ) {}
   ngOnInit(): void {
 
@@ -59,8 +63,11 @@ export class CreareditargaleriaComponent {
       hnombre: ['', Validators.required],
       hfechacreacion: ['', Validators.required],
       hfechamodificacion: ['', Validators.required],
-      hidusuario: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      hidusuario: ['', Validators.required],
     });
+    this.uS.list().subscribe((data) =>{
+      this.listausuarios=data;
+    })
   }
   insertar(): void {
     if (this.form.valid) {
@@ -68,17 +75,17 @@ export class CreareditargaleriaComponent {
       this.galeria.nombreGaleria=this.form.value.hnombre;
       this.galeria.fechaCreacion=this.form.value.hfechacreacion;
       this.galeria.fechaModificacion=this.form.value.hfechamodificacion;
-      this.galeria.idUsuario = parseInt(this.form.value.hidusuario, 10);
+      this.galeria.idUsuario.id= this.form.value.hidusuario;
       if (this.edicion) {
-        this.vS.update(this.galeria).subscribe((data) => {
-          this.vS.list().subscribe((data) => {
-            this.vS.setList(data);
+        this.gS.update(this.galeria).subscribe((data) => {
+          this.gS.list().subscribe((data) => {
+            this.gS.setList(data);
           });
         });
       } else {
-        this.vS.insert(this.galeria).subscribe(data=>{
-          this.vS.list().subscribe(data=>{
-            this.vS.setList(data)
+        this.gS.insert(this.galeria).subscribe(data=>{
+          this.gS.list().subscribe(data=>{
+            this.gS.setList(data)
           })
         });
       }
@@ -89,13 +96,13 @@ export class CreareditargaleriaComponent {
   }
   init() {
     if (this.edicion) {
-      this.vS.listId(this.id).subscribe((data) => {
+      this.gS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           hcodigo: new FormControl(data.idGaleria),
           hnombre: new FormControl(data.nombreGaleria),
           hfechacreacion:  new FormControl(data.fechaCreacion),
           hfechamodificacion:  new FormControl(data.fechaModificacion),
-          hidusuario: new FormControl(data.idUsuario.toString())
+          hidusuario: new FormControl(data.idUsuario.username)
          
         });
       });

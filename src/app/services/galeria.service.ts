@@ -15,8 +15,8 @@ export class GaleriaService {
   list() {
     return this.http.get<Galerias[]>(this.url);
   }
-  insert(v: Galerias) {
-    return this.http.post(this.url, v);
+  insert(g: Galerias) {
+    return this.http.post(this.url, g);
   }
 
   
@@ -35,7 +35,7 @@ export class GaleriaService {
     return this.http.get<Galerias>(`${this.url}/${id}`);
   }
 
-  update(veh: Galerias) {
-    return this.http.put(this.url, veh);
+  update(ga: Galerias) {
+    return this.http.put(this.url, ga);
   }
 }
