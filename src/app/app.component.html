@@ -8,6 +8,9 @@
       <button mat-button [matMenuTriggerFor]="menuAVIgaleria" style="color: white">
             <mat-icon>library_add</mat-icon> Galeria
           </button>
+      <button mat-button [matMenuTriggerFor]="menuAVIconjunto" style="color: white">
+            <mat-icon>library_add</mat-icon> Conjunto semanal
+          </button>
       </div>
      
      </mat-toolbar>
@@ -29,6 +32,14 @@
      
       <button mat-menu-item routerLink="/galerias">Listar</button>
       <button mat-menu-item routerLink="/galerias/registrar">Registrar</button>
+
+     </mat-menu>
+
+
+     <mat-menu #menuAVIconjunto="matMenu">
+     
+      <button mat-menu-item routerLink="/Conjuntos_semanal">Listar</button>
+      <button mat-menu-item routerLink="/Conjuntos_semanal/registrar">Registrar</button>
 
      </mat-menu>
      

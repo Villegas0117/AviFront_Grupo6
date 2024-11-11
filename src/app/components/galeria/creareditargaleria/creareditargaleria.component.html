@@ -1,6 +1,6 @@
 <div class="container" [ngClass]="{ 'edit-mode': edicion, 'register-mode': !edicion }" style="text-align: center; margin: 2%">
 
-    <div> <h1>{{ edicion ? 'Actualizar Vehículo' : 'Registrar Vehículo' }}</h1></div>
+    <div> <h1>{{ edicion ? 'Actualizar Galeria' : 'Registrar Galeria' }}</h1></div>
     <div>
       <form [formGroup]="form" (submit)=" insertar()" class="galeria-form">
 
