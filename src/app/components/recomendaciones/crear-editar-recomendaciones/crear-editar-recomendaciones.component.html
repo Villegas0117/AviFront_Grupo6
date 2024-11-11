@@ -1,0 +1,96 @@
+<div class="container" [ngClass]="{ 'edit-mode': edicion, 'register-mode': !edicion }" style="text-align: center; margin: 2%">
+
+  <div> <h1>{{ edicion ? 'Actualizar Recomendacion' : 'Registrar Recomendacion' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)=" insertar()" class="Recomendacion-form">
+
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hcodigo" readonly />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripcion</mat-label>
+        <input matInput placeholder="Recomendaciones" formControlName="hdescripcion" />
+        <mat-error *ngIf="form.controls['hdescripcion'].hasError('required')">
+          La Descripcion es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br />
+      
+      
+      <mat-form-field>
+        <mat-label>fecha creacion</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="hfechaCreacion"/>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.controls['hfechaCreacion'].hasError('required')">
+          La fecha de creacion es obligatoria
+        </mat-error>
+        <mat-error *ngIf="form.controls['hfechaCreacion'].hasError('fechaFuturaValidator')">
+          La fecha de creacion no puede ser futura
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+
+      <mat-form-field>
+          <mat-label>fecha modificacion</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="hfechaModificacion"/>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error *ngIf="form.controls['hfechaModificacion'].hasError('required')">
+            La fecha de modificacion es obligatoria
+          </mat-error>
+          <mat-error *ngIf="form.controls['hfechaModificacion'].hasError('fechaFuturaValidator')">
+            La fecha de modificacion no puede ser futura
+          </mat-error>
+      </mat-form-field>
+      <br>
+        
+      <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select formControlName="hUsuario" >
+          @for (u of listaUsuarios; track u) {
+          <mat-option [value]="u.id">{{ u.username }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.controls['hUsuario'].hasError('required')">
+          Se necesita un Usuario
+        </mat-error>
+      </mat-form-field>
+        <br>
+        
+        <mat-form-field>
+          <mat-label>Tendencias</mat-label>
+          <mat-select formControlName="hTendencia" >
+            @for (t of listaTendencias; track t) {
+            <mat-option [value]="t.idTendencia">{{ t.popularidad }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.controls['hTendencia'].hasError('required')">
+            Se necesita la tendencia
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button-container">
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            [disabled]="!form.valid"
+          >
+            {{ edicion ? 'Actualizar' : 'Registrar' }}
+          </button>
+        </div>
+    </form>
+  </div>
+</div>

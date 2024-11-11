@@ -7,6 +7,10 @@ import { GaleriaComponent } from './components/galeria/galeria.component';
 import { CreareditargaleriaComponent } from './components/galeria/creareditargaleria/creareditargaleria.component';
 import { ConjuntossemanalesComponent } from './components/conjuntossemanales/conjuntossemanales.component';
 import { CrearregistrarconjuntossemanalesComponent } from './components/conjuntossemanales/crearregistrarconjuntossemanales/crearregistrarconjuntossemanales.component';
+import { RecomendacionesComponent } from './components/recomendaciones/recomendaciones.component';
+import { CrearEditarRecomendacionesComponent } from './components/recomendaciones/crear-editar-recomendaciones/crear-editar-recomendaciones.component';
+import { TendenciasComponent } from './components/tendencias/tendencias.component';
+import { CreareditartendenciasComponent } from './components/tendencias/creareditartendencias/creareditartendencias.component';
 
 export const routes: Routes = [
       {
@@ -29,7 +33,29 @@ export const routes: Routes = [
                 },
                 {
                     path:'ediciones/:id',component:CreareditargaleriaComponent
-                }
+                },
+            ]
+      },
+      {
+            path: 'recomendaciones', component: RecomendacionesComponent,
+            children:[
+                  {
+                  path:'nuevo',component:CrearEditarRecomendacionesComponent
+                  },
+                  {
+                  path:'ediciones/:id',component:CrearEditarRecomendacionesComponent
+                  }
+            ]
+      },
+      {
+            path: 'tendencias', component: TendenciasComponent,
+            children:[
+                  {
+                  path:'nuevo',component:CreareditartendenciasComponent
+                  },
+                  {
+                  path:'ediciones/:id',component:CreareditartendenciasComponent
+                  }
             ]
       },
       {
