@@ -1,0 +1,43 @@
+<div class="container" style="text-align: center;margin:2%">
+    <div><h1>Registro de Tendencia</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)=" insertar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hcodigo" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Tendencia 1" formControlName="hnombre" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Descripcion</mat-label>
+            <input matInput placeholder="Tendencia 1" formControlName="hdescripcion" />
+          </mat-form-field>
+          <br />
+        <mat-form-field>
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="hcategoria" >
+            @for (c of listaCategorias; track c) {
+            <mat-option [value]="c.value">{{ c.viewValue }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Popularidad</mat-label>
+          <mat-select formControlName="hpopularidad">
+            @for (p of listaPopularidad; track p) {
+            <mat-option [value]="p.value">{{ p.viewValue }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
