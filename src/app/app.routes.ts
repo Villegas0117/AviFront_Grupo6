@@ -23,7 +23,7 @@ export const routes: Routes = [
             path:'galerias',component:GaleriaComponent,
             children:[
                 {
-                    path:'listar',component:CreareditargaleriaComponent
+                    path:'registrar',component:CreareditargaleriaComponent
                 },
                 {
                     path:'ediciones/:id',component:CreareditargaleriaComponent

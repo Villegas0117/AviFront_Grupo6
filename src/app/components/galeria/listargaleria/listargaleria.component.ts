@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
-import { Galerias } from '../../../models/Galerias';
+import { galerias } from '../../../models/Galerias';
 import { GaleriaService } from '../../../services/galeria.service';
 
 @Component({
@@ -14,20 +14,20 @@ import { GaleriaService } from '../../../services/galeria.service';
   styleUrl: './listargaleria.component.css'
 })
 export class ListargaleriaComponent implements OnInit{
-  dataSource: MatTableDataSource<Galerias> = new MatTableDataSource();
+  dataSource: MatTableDataSource<galerias> = new MatTableDataSource();
 
-  displayedColumns:string[]=['c1','c2','c3','c4', 'c5', 'accion01','accion02']
+  displayedColumns:string[]=['c1','c2','c3','c4', 'c5', 'eliminar','editar']
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private vS: GaleriaService) {}
+  constructor(private gS: GaleriaService) {}
 
   ngOnInit(): void {
-    this.vS.list().subscribe(data=>{
+    this.gS.list().subscribe(data=>{
       this.dataSource=new MatTableDataSource(data)
       this.dataSource.paginator = this.paginator;
     })
-    this.vS.getList().subscribe(data=>{
+    this.gS.getList().subscribe(data=>{
       this.dataSource=new MatTableDataSource(data)
       this.dataSource.paginator = this.paginator;
     })
@@ -38,9 +38,9 @@ export class ListargaleriaComponent implements OnInit{
   }
 
   eliminar(id: number) {
-    this.vS.delete(id).subscribe((data) => {
-      this.vS.list().subscribe((data) => {
-        this.vS.setList(data);
+    this.gS.delete(id).subscribe((data) => {
+      this.gS.list().subscribe((data) => {
+        this.gS.setList(data);
       });
     });
   }

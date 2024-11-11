@@ -13,7 +13,7 @@ import {
 } from '@angular/forms';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Galerias } from '../../../models/Galerias';
+import { galerias } from '../../../models/Galerias';
 import { GaleriaService } from '../../../services/galeria.service';
 import { CommonModule } from '@angular/common';
 import { Usuarios } from '../../../models/Usuarios';
@@ -36,7 +36,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 })
 export class CreareditargaleriaComponent {
   form: FormGroup = new FormGroup({});
-  galeria: Galerias = new Galerias();
+  galeria: galerias = new galerias();
   listausuarios: Usuarios[]= [];
 
   id: number = 0;
@@ -61,8 +61,8 @@ export class CreareditargaleriaComponent {
     this.form = this.formBuilder.group({
       hcodigo:[''],
       hnombre: ['', Validators.required],
-      hfechacreacion: ['', Validators.required],
-      hfechamodificacion: ['', Validators.required],
+      hfechacreacion: ['', [Validators.required, this.fechaFuturaValidator]],
+      hfechamodificacion: ['', [Validators.required, this.fechaFuturaValidator]],
       hidusuario: ['', Validators.required],
     });
     this.uS.list().subscribe((data) =>{
@@ -76,6 +76,7 @@ export class CreareditargaleriaComponent {
       this.galeria.fechaCreacion=this.form.value.hfechacreacion;
       this.galeria.fechaModificacion=this.form.value.hfechamodificacion;
       this.galeria.idUsuario.id= this.form.value.hidusuario;
+
       if (this.edicion) {
         this.gS.update(this.galeria).subscribe((data) => {
           this.gS.list().subscribe((data) => {
@@ -107,6 +108,12 @@ export class CreareditargaleriaComponent {
         });
       });
     }
+  }
+
+  fechaFuturaValidator(control: FormControl) {
+    const fechaIngresada = new Date(control.value);
+    const fechaActual = new Date();
+    return fechaIngresada < fechaActual ? { fechaFutura: true } : null;
   }
 
 
