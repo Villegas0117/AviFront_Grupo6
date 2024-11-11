@@ -11,8 +11,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-
-
 import { CommonModule } from '@angular/common';
 import { Tendencia } from '../../../models/Tendencia';
 import { TendenciasService } from '../../../services/tendencias.service';
