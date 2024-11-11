@@ -25,12 +25,12 @@
 
         <ng-container matColumnDef="c5">
           <th mat-header-cell *matHeaderCellDef>Usuario</th>
-          <td mat-cell *matCellDef="let element">{{ element.id_Usuario?.username}}</td>
+          <td mat-cell *matCellDef="let element">{{ element.id_Usuario.username}}</td>
         </ng-container>
 
         <ng-container matColumnDef="c6">
           <th mat-header-cell *matHeaderCellDef>Tendencia</th>
-          <td mat-cell *matCellDef="let element">{{ element.id_Tendencia?.popularidad }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.id_Tendencia.popularidad }}</td>
         </ng-container>
   
         <ng-container matColumnDef="accion01">
