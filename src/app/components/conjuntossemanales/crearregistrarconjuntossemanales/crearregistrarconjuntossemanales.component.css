@@ -1,0 +1,23 @@
+mat-form-field{
+    width: 60%;
+}
+.custom-button {
+
+    background-color: #eb0a21;
+  
+    color: white;
+  
+   }
+
+  
+  
+  .edit-mode h1 {
+    color: #e81a1ad7; /* Color de texto para el título en modo edición */
+  }
+  
+ 
+
+  
+  .register-mode h1 {
+    color: #f53d3d; /* Color de texto para el título en modo registro */
+  }

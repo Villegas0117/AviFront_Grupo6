@@ -2,8 +2,13 @@ import { Usuarios } from "./Usuarios"
 
 export class galerias{
     idGaleria:number=0
-    nombreGaleria:string=""
+
+    idUsuario:Usuarios= new Usuarios()
+
+    nombreGaleria:String=""
+
     fechaCreacion:Date=new Date(Date.now())
-    fechaModificacionDate=new Date(Date.now())
-    idUsuario: Usuarios =new Usuarios()
+
+    fechaModificacion:Date=new Date(Date.now())
+
 }

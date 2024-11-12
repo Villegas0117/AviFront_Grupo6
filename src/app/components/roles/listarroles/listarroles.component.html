@@ -1,29 +1,38 @@
 <div>
-      <div><h1>Lista de Roles</h1></div>
-      <div>
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div style="text-align: center;margin: 2%;">
+    <h1>Lista de Roles</h1>
+  </div>
+  <div  class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
 
-                  <ng-container matColumnDef="c1">
-                    <th mat-header-cell *matHeaderCellDef>Id</th>
-                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                  </ng-container>
-                
-                  <!-- Name Column -->
-                  <ng-container matColumnDef="c2">
-                    <th mat-header-cell *matHeaderCellDef> Rol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
-                  </ng-container>
-                
-                  <!-- Weight Column -->
-                  <ng-container matColumnDef="c3">
-                    <th mat-header-cell *matHeaderCellDef> Id del Usuario </th>
-                    <td mat-cell *matCellDef="let element"> {{element.user?.id}} </td>
-                  </ng-container>
-                
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-                
-                
-      </div>
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Rol </th>
+        <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Id del Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.user?.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['edicionesRoles',element.id]">
+          <mat-icon style="color: greenyellow;">edit</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  <!-- Paginación -->
+   <mat-paginator [pageSizeOptions]="[5, 10 , 20]" showFirstLastButtons></mat-paginator>
+  </div>
 </div>

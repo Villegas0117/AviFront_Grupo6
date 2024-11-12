@@ -1,27 +1,52 @@
 <mat-toolbar class="custom-toolbar" >
-
       <mat-icon >menu</mat-icon>
-     
       <div>
      
-      <button mat-button [matMenuTriggerFor]="menuAVI" style="color: white;" >AVI Application</button>
-     
+      <button mat-button [matMenuTriggerFor]="menuAVIgaleria" style="color: white">
+            <mat-icon>library_add</mat-icon> Galeria
+          </button>
+
+      <button mat-button [matMenuTriggerFor]="menuAVIconjunto" style="color: white">
+            <mat-icon>library_add</mat-icon> Conjunto semanal
+          </button>
+
+
+      <button mat-button [matMenuTriggerFor]="menuAVI" style="color: white;" >AVI Application</button> 
+
       </div>
-     
-     </mat-toolbar>
-     
-     
-     
-     <mat-menu #menuAVI="matMenu">
-     
+     </mat-toolbar>    
+     <mat-menu #menuAVI="matMenu"> 
       <button mat-menu-item routerLink="/usuarios" >Usuarios</button>
+      <button mat-menu-item routerLink="/usuarios/nuevo">Registrar Usuario</button>
       <button mat-menu-item routerLink="/roles">Roles</button>
+      <button mat-menu-item routerLink="/roles/nuevo">Crear Rol </button>
       <button mat-menu-item routerLink="/prendas">Prendas</button>
       <button mat-menu-item routerLink="/conjuntos">Conjuntos</button>
+      <button mat-menu-item routerLink="/recomendaciones">Recomendaciones</button>
+      <button mat-menu-item routerLink="/tendencias">Tendencias</button>
+      <button mat-menu-item routerLink="/recomendaciones/nuevo">Registrar Recomendacion</button>
+      <button mat-menu-item routerLink="/tendencias/nuevo">Registrar Tendencia</button>
+     </mat-menu>
      
+     <mat-menu #menuAVIgaleria="matMenu">
+     
+      <button mat-menu-item routerLink="/galerias">Listar</button>
+      <button mat-menu-item routerLink="/galerias/registrar">Registrar</button>
+
+     </mat-menu>
+
+
+
+     <mat-menu #menuAVIconjunto="matMenu">
+     
+      <button mat-menu-item routerLink="/Conjuntos_semanal">Listar</button>
+      <button mat-menu-item routerLink="/Conjuntos_semanal/registrar">Registrar</button>
 
      </mat-menu>
      
      <router-outlet></router-outlet>
+
+<router-outlet></router-outlet>
+
      
      

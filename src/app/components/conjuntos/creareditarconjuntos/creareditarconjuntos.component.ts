@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Conjuntos } from '../../../models/Conjuntos';
+import { galerias } from '../../../models/Galerias';
 import { Usuarios } from '../../../models/Usuarios';
 import { galerias } from '../../../models/Galerias';
 import { ConjuntosService } from '../../../services/conjuntos.service';
@@ -35,7 +36,7 @@ export class CreareditarconjuntosComponent implements OnInit {
   conjunto: Conjuntos = new Conjuntos();
   edicion: boolean = false;
   id: number = 0;
-  tipoPrenda: boolean = false;
+
   listaUsuarios: Usuarios[]=[];
   listaGaleria: galerias[]=[]
 

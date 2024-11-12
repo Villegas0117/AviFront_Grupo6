@@ -1,6 +1,7 @@
 import { Usuarios } from "./Usuarios"
 
 export class Prendas{
+
       id_prenda:number=0
       id_usuario: Usuarios=new Usuarios();
       nombre_prenda:string=""

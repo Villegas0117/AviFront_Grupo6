@@ -1,0 +1,95 @@
+<div class="container" [ngClass]="{ 'edit-mode': edicion, 'register-mode': !edicion }" style="text-align: center; margin: 2%">
+
+    <div> <h1>{{ edicion ? 'Actualizar Conjuntos semanal' : 'Registrar Conjuntos semanal' }}</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)=" insertar()" >
+
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hcodigo" readonly />
+        </mat-form-field>
+
+        <br>
+          
+        <mat-form-field>
+          <mat-label>Conjunto</mat-label>
+          <mat-select formControlName="hidconjunto" >
+            @for (c of listaconjunto; track c) {
+            <mat-option [value]="c.id_Conjunto">{{ c.nombre_Conjunto }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.controls['hidconjunto'].hasError('required')">
+            Se necesita un conjunto
+          </mat-error>
+        </mat-form-field>
+
+
+        <br>
+          
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="hidusuario" >
+            @for (u of listausuarios; track u) {
+            <mat-option [value]="u.id">{{ u.username }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.controls['hidusuario'].hasError('required')">
+            Se necesita un usuario
+          </mat-error>
+        </mat-form-field>
+
+
+        <br>
+        
+        
+        <mat-form-field>
+          <mat-label>fecha creacion</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="hfechacreacion"/>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.controls['hfechacreacion'].hasError('required')">
+            La fecha de creacion es obligatoria
+          </mat-error>
+          <mat-error *ngIf="form.controls['hfechacreacion'].hasError('fechaFuturaValidator')">
+            La fecha de creacion no puede ser futura
+          </mat-error>
+        </mat-form-field>
+        <br>
+
+
+        <mat-form-field>
+            <mat-label> Dia de la semana</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="hdiadesemana"/>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error *ngIf="form.controls['hdiadesemana'].hasError('required')">
+              El dia de la semana es obligatoria
+            </mat-error>
+            <mat-error *ngIf="form.controls['hdiadesemana'].hasError('fechaFuturaValidator')">
+              El dia de la semana no puede ser futura
+            </mat-error>
+        </mat-form-field>
+
+     
+  
+          <div class="button-container">
+            <button
+              mat-flat-button
+              color="primary"
+              type="submit"
+              [disabled]="!form.valid"
+            >
+              {{ edicion ? 'Actualizar' : 'Registrar' }}
+            </button>
+          </div>
+      </form>
+    </div>
+  </div>

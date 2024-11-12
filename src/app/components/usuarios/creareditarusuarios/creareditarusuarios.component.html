@@ -1,0 +1,47 @@
+<div class="container"
+    style="text-align: center; margin: 2%; max-width: 600px; margin: 0 auto; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); border-radius: 10px; background-color: #f9f9f9;">
+
+    <div style="margin-bottom: 20px;">
+        <h1 style="font-size: 24px; color: #3f51b5;">Registro de Usuarios</h1>
+    </div>
+
+    <div>
+        <form [formGroup]="form" (submit)="insertar()" style="display: flex; flex-direction: column; gap: 15px;">
+
+            <mat-form-field class="example-full-width" appearance="fill" *ngIf="edicion">
+                <mat-label>Código</mat-label>
+                <input matInput formControlName="hcodigo" readonly />
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombre Usuario</mat-label>
+                <input matInput placeholder="Juan Perez" formControlName="hnombre" />
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Ingrese su contraseña</mat-label>
+                <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="********" formControlName="hpass" />
+                <button type="button" mat-icon-button matSuffix (click)="showPassword = !showPassword">
+                    <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="hmail" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha de Modificacion</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="hfecha" placeholder="MM/DD/YYYY">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button mat-flat-button color="primary" class="custom-button"
+                    style="padding: 10px 20px; background-color: #3f51b5; color: white; font-size: 16px;">Editar</button>
+            </div>
+        </form>
+    </div>
+</div>
