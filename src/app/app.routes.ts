@@ -10,9 +10,25 @@ import { CreareditarconjuntoComponent } from './components/conjuntos/creareditar
 export const routes: Routes = [
       {
             path:'usuarios', component: UsuariosComponent,
+            children:[
+                  {
+                        path:'nuevo', component: CreareditarusuariosComponent
+                  },
+                  {
+                        path: 'edicionUsuario/:id', component: CreareditarusuariosComponent
+                  }
+            ]
       },
       {
             path: 'roles', component: RolesComponent,
+            children:[
+                  {
+                        path:'nuevo', component: CreareditarrolesComponent
+                  },
+                  {
+                        path: 'edicionesRoles/:id', component :CreareditarrolesComponent
+                  }
+            ]
       },
       {
             path: 'prendas', component: PrendasComponent,
