@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Conjuntos } from '../../../models/Conjuntos';
 import { galerias } from '../../../models/Galerias';
 import { Usuarios } from '../../../models/Usuarios';
-import { galerias } from '../../../models/Galerias';
 import { ConjuntosService } from '../../../services/conjuntos.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { GaleriasService } from '../../../services/galerias.service';
