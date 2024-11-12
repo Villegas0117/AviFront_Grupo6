@@ -1,23 +1,25 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { 
-  FormBuilder, 
-  FormControl, 
-  FormGroup, 
-  ReactiveFormsModule, 
-  Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { conjunto_dia } from '../../../models/Conjuntos_semanales';
-import { Usuarios } from '../../../models/Usuarios';
-import { Conjuntos } from '../../../models/Conjuntos';
-import { ConjuntosService } from '../../../services/conjuntos.service';
-import { ConjuntossemanalesService } from '../../../services/conjuntossemanales.service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Usuarios } from '../../../models/Usuarios';
 import { UsuarioService } from '../../../services/usuario.service';
+import { ConjuntoSemanal } from '../../../models/Conjuntos_semanales';
+import { Conjuntos } from '../../../models/Conjuntos';
+import { ConjuntossemanalesService } from '../../../services/conjuntossemanales.service';
+import { ConjuntosService } from '../../../services/conjuntos.service';
+
 
 @Component({
   selector: 'app-crearregistrarconjuntossemanales',
@@ -37,7 +39,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 })
 export class CrearregistrarconjuntossemanalesComponent {
   form: FormGroup = new FormGroup({});
-  conjsemanal: conjunto_dia = new conjunto_dia();
+  conjsemanal: ConjuntoSemanal = new ConjuntoSemanal();
   listausuarios: Usuarios[]= [];
   listaconjunto: Conjuntos[]=[];
 
@@ -49,8 +51,10 @@ export class CrearregistrarconjuntossemanalesComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+
+    private cS:ConjuntosService,
     private uS: UsuarioService,
-    private cS:ConjuntosService
+ 
   ) {}
 
   ngOnInit(): void {
@@ -66,24 +70,25 @@ export class CrearregistrarconjuntossemanalesComponent {
       hcodigo:[''],
       hidconjunto: ['', Validators.required],
       hidusuario: ['', Validators.required],
-      hfechaCreacion: ['', [Validators.required, this.fechaFuturaValidator]],
-      hdiaDeSemana: ['', [Validators.required, this.fechaFuturaValidator]],
+      hfechacreacion: ['', [Validators.required, this.fechaFuturaValidator]],
+      hdiadesemana: ['', [Validators.required, this.fechaFuturaValidator]],
      
     });
-    this.uS.list().subscribe((data) =>{
-      this.listausuarios=data;
-    })
     this.cS.list().subscribe((data) =>{
       this.listaconjunto=data;
     })
+    this.uS.list().subscribe((data) =>{
+      this.listausuarios=data;
+    })
+    
   }
   insertar(): void {
     if (this.form.valid) {
-      this.conjsemanal.id= this.form.value.hcodigo
-      this.conjsemanal.id_Conjunto=this.form.value.hidconjunto
-      this.conjsemanal.id_usuario=this.form.value.hidusuario
-      this.conjsemanal.fechaCreacion=this.form.value.hfechaCreacion
-      this.conjsemanal.diaDeSemana=this.form.value.hdiaDeSemana
+      this.conjsemanal.id= this.form.value.hcodigo;
+      this.conjsemanal.id_Conjunto.id_Conjunto=this.form.value.hidconjunto;
+      this.conjsemanal.id_usuario.id=this.form.value.hidusuario;
+      this.conjsemanal.fechaCreacion=this.form.value.hfechacreacion;
+      this.conjsemanal.diaDeSemana=this.form.value.hdiadesemana;
 
       if (this.edicion) {
         this.csS.update(this.conjsemanal).subscribe((data) => {
@@ -108,10 +113,10 @@ export class CrearregistrarconjuntossemanalesComponent {
       this.csS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           hcodigo: new FormControl(data.id),
-          hidconjunto: new FormControl(data.id_Conjunto.nombre_Conjunto),
+          hidconjunto: new FormControl(data.id_Conjunto),
           hidusuario:new FormControl(data.id_usuario.username),
-          hfechaCreacion:new FormControl(data.fechaCreacion),
-          hdiaDeSemana:new FormControl(data.diaDeSemana), 
+          hfechacreacion:new FormControl(data.fechaCreacion),
+          hdiadesemana:new FormControl(data.diaDeSemana),
         });
       });
     }

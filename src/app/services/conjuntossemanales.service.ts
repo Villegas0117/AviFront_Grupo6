@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { Subject } from 'rxjs';
-import { conjunto_dia } from '../models/Conjuntos_semanales';
+import { ConjuntoSemanal } from '../models/Conjuntos_semanales';
 import { HttpClient } from '@angular/common/http';
 
 const base_url = environment.base;
@@ -12,12 +12,12 @@ const base_url = environment.base;
 export class ConjuntossemanalesService {
 
   private url = `${base_url}/conjunto-semanal`; 
-  private listaCambio = new Subject<conjunto_dia[]>();
+  private listaCambio = new Subject<ConjuntoSemanal[]>();
   constructor(private http: HttpClient) {}
   list() {
-    return this.http.get<conjunto_dia[]>(this.url);
+    return this.http.get<ConjuntoSemanal[]>(this.url);
   }
-  insert(c: conjunto_dia) {
+  insert(c: ConjuntoSemanal) {
     return this.http.post(this.url, c);
   }
 
@@ -26,7 +26,7 @@ export class ConjuntossemanalesService {
     return this.listaCambio.asObservable();
   }
 
-  setList(listaNueva: conjunto_dia[]) {
+  setList(listaNueva: ConjuntoSemanal[]) {
     this.listaCambio.next(listaNueva);
   }
   delete(id: number) {
@@ -34,10 +34,10 @@ export class ConjuntossemanalesService {
   }
 
   listId(id: number) {
-    return this.http.get<conjunto_dia>(`${this.url}/${id}`);
+    return this.http.get<ConjuntoSemanal>(`${this.url}/${id}`);
   }
 
-  update(co: conjunto_dia) {
+  update(co: ConjuntoSemanal) {
     return this.http.put(this.url, co);
   }
 }

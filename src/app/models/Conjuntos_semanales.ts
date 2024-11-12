@@ -1,7 +1,7 @@
 import { Conjuntos } from "./Conjuntos";
 import { Usuarios } from "./Usuarios";
 
-export class conjunto_dia{
+export class ConjuntoSemanal{
     id:number=0
  
     id_Conjunto:Conjuntos= new Conjuntos()

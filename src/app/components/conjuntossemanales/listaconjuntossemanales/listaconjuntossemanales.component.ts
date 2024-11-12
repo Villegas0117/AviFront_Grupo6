@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
-import { conjunto_dia } from '../../../models/Conjuntos_semanales';
+import { ConjuntoSemanal } from '../../../models/Conjuntos_semanales';
 import { ConjuntossemanalesService } from '../../../services/conjuntossemanales.service';
 
 @Component({
@@ -14,7 +14,8 @@ import { ConjuntossemanalesService } from '../../../services/conjuntossemanales.
   styleUrl: './listaconjuntossemanales.component.css'
 })
 export class ListaconjuntossemanalesComponent implements OnInit{
-  dataSource: MatTableDataSource<conjunto_dia> = new MatTableDataSource();
+  dataSource: MatTableDataSource<ConjuntoSemanal> = new MatTableDataSource();
+  
 
   displayedColumns:string[]=['c1','c2','c3','c4', 'c5', 'eliminar','editar']
 

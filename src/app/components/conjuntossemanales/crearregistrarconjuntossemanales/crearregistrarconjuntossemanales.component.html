@@ -1,6 +1,6 @@
 <div class="container" [ngClass]="{ 'edit-mode': edicion, 'register-mode': !edicion }" style="text-align: center; margin: 2%">
 
-    <div> <h1>{{ edicion ? 'Actualizar Conjuntos_semanal' : 'Registrar Conjuntos_semanal' }}</h1></div>
+    <div> <h1>{{ edicion ? 'Actualizar Conjuntos semanal' : 'Registrar Conjuntos semanal' }}</h1></div>
     <div>
       <form [formGroup]="form" (submit)=" insertar()" >
 
@@ -44,14 +44,14 @@
         
         <mat-form-field>
           <mat-label>fecha creacion</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="hfechaCreacion"/>
+          <input matInput [matDatepicker]="picker" formControlName="hfechacreacion"/>
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="form.controls['hfechaCreacion'].hasError('required')">
+          <mat-error *ngIf="form.controls['hfechacreacion'].hasError('required')">
             La fecha de creacion es obligatoria
           </mat-error>
           <mat-error *ngIf="form.controls['hfechacreacion'].hasError('fechaFuturaValidator')">
@@ -63,17 +63,17 @@
 
         <mat-form-field>
             <mat-label> Dia de la semana</mat-label>
-            <input matInput [matDatepicker]="picker1" formControlName="hdiaDeSemana"/>
+            <input matInput [matDatepicker]="picker1" formControlName="hdiadesemana"/>
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle
               matIconSuffix
               [for]="picker1"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
-            <mat-error *ngIf="form.controls['hdiaDeSemana'].hasError('required')">
+            <mat-error *ngIf="form.controls['hdiadesemana'].hasError('required')">
               El dia de la semana es obligatoria
             </mat-error>
-            <mat-error *ngIf="form.controls['hdiaDeSemana'].hasError('fechaFuturaValidator')">
+            <mat-error *ngIf="form.controls['hdiadesemana'].hasError('fechaFuturaValidator')">
               El dia de la semana no puede ser futura
             </mat-error>
         </mat-form-field>
