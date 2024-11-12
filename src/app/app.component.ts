@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import {  RouterModule, RouterOutlet } from '@angular/router';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { PrendasComponent } from './components/prendas/prendas.component';
 import { ConjuntosComponent } from './components/conjuntos/conjuntos.component';
+
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import { ConjuntosComponent } from './components/conjuntos/conjuntos.component';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    RouterLink
+    RouterModule,
+    
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

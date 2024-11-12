@@ -26,8 +26,21 @@
             <th mat-header-cell *matHeaderCellDef>Fecha Modificacion</th>
             <td mat-cell *matCellDef="let element">{{ element.fecha_Modificacion | date: 'dd MMMM yyyy'}}</td>
           </ng-container>
+
+          <ng-container matColumnDef="accion01">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let element" (click)="eliminar(element.id_Conjunto)">
+              <mat-icon style="color: crimson;">delete_forever</mat-icon>
+            </td>
+          </ng-container>
     
-          
+          <ng-container matColumnDef="accion02">
+            <th mat-header-cell *matHeaderCellDef>Editar</th>
+            <td mat-cell *matCellDef="let element" [routerLink]="['ediciones',element.id_Conjunto]">
+              <mat-icon style="color: greenyellow;">edit</mat-icon>
+            </td>
+          </ng-container>
+        
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     
