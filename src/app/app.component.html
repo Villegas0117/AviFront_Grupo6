@@ -1,52 +1,83 @@
-<mat-toolbar class="custom-toolbar" >
-      <mat-icon >menu</mat-icon>
+<mat-toolbar class="custom-toolbar">
+      <mat-icon>menu</mat-icon>
       <div>
-     
-      <button mat-button [matMenuTriggerFor]="menuAVIgaleria" style="color: white">
-            <mat-icon>library_add</mat-icon> Galeria
-          </button>
+            <button mat-button [matMenuTriggerFor]="menuAVIUsuarios"
+            style="color: white;"><mat-icon>perm_identity</mat-icon>Usuarios</button>
 
-      <button mat-button [matMenuTriggerFor]="menuAVIconjunto" style="color: white">
-            <mat-icon>library_add</mat-icon> Conjunto semanal
-          </button>
+            
+            <button mat-button [matMenuTriggerFor]="menuAVIRoles"
+                  style="color: white;"><mat-icon>verified_user</mat-icon>Roles</button>
+
+            <button mat-button [matMenuTriggerFor]="menuAVIgaleria" style="color: white">
+                  <mat-icon>library_add</mat-icon> Galeria
+            </button>
+
+            <button mat-button [matMenuTriggerFor]="menuAVIconjunto" style="color: white">
+                  <mat-icon>library_add</mat-icon> Conjunto semanal
+            </button>
 
 
-      <button mat-button [matMenuTriggerFor]="menuAVI" style="color: white;" >AVI Application</button> 
+            <button mat-button [matMenuTriggerFor]="menuAVIPrendas"
+                  style="color: white;"><mat-icon>layers</mat-icon>Prendas</button>
+
+            <button mat-button [matMenuTriggerFor]="menuAVIConjuntos"
+                  style="color: white;"><mat-icon>layers</mat-icon>Conjuntos</button>
+
+            <button mat-button [matMenuTriggerFor]="menuAVIRecomendaciones"
+                  style="color: white;"><mat-icon>layers</mat-icon>Recomendaciones </button>
+
+            <button mat-button [matMenuTriggerFor]="menuAVITendencias"
+                  style="color: white;"><mat-icon>layers</mat-icon>Tendencias</button>
 
       </div>
-     </mat-toolbar>    
-     <mat-menu #menuAVI="matMenu"> 
-      <button mat-menu-item routerLink="/usuarios" >Usuarios</button>
-      <button mat-menu-item routerLink="/usuarios/nuevo">Registrar Usuario</button>
-      <button mat-menu-item routerLink="/roles">Roles</button>
-      <button mat-menu-item routerLink="/roles/nuevo">Crear Rol </button>
-      <button mat-menu-item routerLink="/prendas">Prendas</button>
-      <button mat-menu-item routerLink="/conjuntos">Conjuntos</button>
-      <button mat-menu-item routerLink="/recomendaciones">Recomendaciones</button>
-      <button mat-menu-item routerLink="/tendencias">Tendencias</button>
-      <button mat-menu-item routerLink="/recomendaciones/nuevo">Registrar Recomendacion</button>
-      <button mat-menu-item routerLink="/tendencias/nuevo">Registrar Tendencia</button>
-     </mat-menu>
-     
-     <mat-menu #menuAVIgaleria="matMenu">
-     
-      <button mat-menu-item routerLink="/galerias">Listar</button>
-      <button mat-menu-item routerLink="/galerias/registrar">Registrar</button>
-
-     </mat-menu>
+</mat-toolbar>
+<mat-menu #menuAVIUsuarios="matMenu">
+      <button mat-menu-item routerLink="/usuarios">Ver Usuarios</button>
+      <button mat-menu-item routerLink="/usuarios/nuevo">Registrar un Usuario</button>
+</mat-menu>
 
 
 
-     <mat-menu #menuAVIconjunto="matMenu">
-     
-      <button mat-menu-item routerLink="/Conjuntos_semanal">Listar</button>
-      <button mat-menu-item routerLink="/Conjuntos_semanal/registrar">Registrar</button>
+<mat-menu #menuAVIgaleria="matMenu">
 
-     </mat-menu>
-     
-     <router-outlet></router-outlet>
+      <button mat-menu-item routerLink="/galerias">Ver Galerias</button>
+      <button mat-menu-item routerLink="/galerias/registrar">Registrar una Galeria</button>
+</mat-menu>
+
+<mat-menu #menuAVIConjuntos="matMenu">
+      <button mat-menu-item routerLink="/conjuntos">Ver Conjuntos</button>
+      <button mat-menu-item routerLink="/conjuntos/nuevo">Registrar un Conjunto</button>
+</mat-menu>
+
+<mat-menu #menuAVIRecomendaciones="matMenu">
+      <button mat-menu-item routerLink="/recomendaciones">Ver Recomendaciones</button>
+      <button mat-menu-item routerLink="/recomendaciones/nuevo">Registrar una Recomendacion</button>
+</mat-menu>
+
+<mat-menu #menuAVITendencias="matMenu">
+      
+      <button mat-menu-item routerLink="/tendencias">Ver Tendencias</button>
+      <button mat-menu-item routerLink="/tendencias/nuevo">Registrar una Tendencia</button>
+</mat-menu>
+
+<mat-menu #menuAVIRoles="matMenu">
+      <button mat-menu-item routerLink="/roles">Ver Roles</button>
+      <button mat-menu-item routerLink="/roles/nuevo">Asignar Rol a Usuario </button>
+</mat-menu>
+
+<mat-menu #menuAVIPrendas="matMenu">
+      <button mat-menu-item routerLink="/prendas">Ver Prendas</button>
+      <button mat-menu-item routerLink="/prendas/nuevo">Registrar una Prenda</button>
+</mat-menu>
+
+
+<mat-menu #menuAVIconjunto="matMenu">
+
+      <button mat-menu-item routerLink="/Conjuntos_semanal">Ver Conjuntos</button>
+      <button mat-menu-item routerLink="/Conjuntos_semanal/registrar">Registrar un Conjunto</button>
+
+</mat-menu>
 
 <router-outlet></router-outlet>
 
-     
-     
+<router-outlet></router-outlet>
