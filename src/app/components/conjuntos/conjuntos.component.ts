@@ -5,12 +5,10 @@ import { ListarconjuntosComponent } from './listarconjuntos/listarconjuntos.comp
 @Component({
   selector: 'app-conjuntos',
   standalone: true,
-  imports: [RouterOutlet,ListarconjuntosComponent],
+  imports: [RouterOutlet, ListarconjuntosComponent],
   templateUrl: './conjuntos.component.html',
   styleUrl: './conjuntos.component.css'
 })
 export class ConjuntosComponent {
-  constructor(public route:ActivatedRoute){}
-
+  constructor(public route:ActivatedRoute) {}
 }
- 

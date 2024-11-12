@@ -3,8 +3,8 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { PrendasComponent } from './components/prendas/prendas.component';
 import { ConjuntosComponent } from './components/conjuntos/conjuntos.component';
-import { CreareditarconjuntoComponent } from './components/conjuntos/creareditarconjunto/creareditarconjunto.component';
 import { CreareditarprendasComponent } from './components/prendas/creareditarprendas/creareditarprendas.component';
+import { CreareditarconjuntosComponent } from './components/conjuntos/creareditarconjuntos/creareditarconjuntos.component';
 
 
 export const routes: Routes = [
@@ -29,10 +29,10 @@ export const routes: Routes = [
             path: 'conjuntos', component: ConjuntosComponent,
             children:[
                   {
-                        path:'nuevo',component:CreareditarconjuntoComponent
+                        path:'nuevo',component:CreareditarconjuntosComponent
                   },
                   {
-                        path:'ediciones/:id',component:CreareditarconjuntoComponent
+                        path:'ediciones/:id',component:CreareditarconjuntosComponent
                   },
             ]
       },

@@ -1,6 +1,6 @@
 import { Usuarios } from "./Usuarios"
 
-export class Galerias{
+export class galerias{
     idGaleria:number=0
     nombreGaleria:string=""
     fechaCreacion:Date=new Date(Date.now())
