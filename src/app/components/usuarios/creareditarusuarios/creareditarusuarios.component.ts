@@ -97,6 +97,7 @@ export class CreareditarusuariosComponent implements OnInit {
       this.uS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           hcodigo: new FormControl(data.id),
+          hpass:new FormControl(data.password),
           hnombre: new FormControl(data.username),
           hmail: new FormControl(data.email),
           hfecha: new FormControl(data.fecha_modificacion),
