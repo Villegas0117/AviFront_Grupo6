@@ -13,6 +13,8 @@ import { TendenciasComponent } from './components/tendencias/tendencias.componen
 import { CreareditartendenciasComponent } from './components/tendencias/creareditartendencias/creareditartendencias.component';
 import { RecomendacionesComponent } from './components/recomendaciones/recomendaciones.component';
 import { CrearEditarRecomendacionesComponent } from './components/recomendaciones/crear-editar-recomendaciones/crear-editar-recomendaciones.component';
+import { CreareditarprendasComponent } from './components/prendas/creareditarprendas/creareditarprendas.component';
+import { CreareditarconjuntosComponent } from './components/conjuntos/creareditarconjuntos/creareditarconjuntos.component';
 export const routes: Routes = [
   {
     path: 'usuarios',
