@@ -1,1 +1,60 @@
-<p>creareditarconjuntos works!</p>
+
+<div class="container" style="text-align: center; margin: 2%; max-width: 600px; margin: 0 auto; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); border-radius: 10px; background-color: #f9f9f9;">
+
+    <div style="margin-bottom: 20px;">
+        <h1 style="font-size: 24px; color: #3f51b5;">Registro de Prendas</h1>
+    </div>
+
+    <div>
+        <form [formGroup]="form" (submit)="insertar()" style="display: flex; flex-direction: column; gap: 15px;">
+          
+          <mat-form-field class="example-full-width"  appearance="fill" *ngIf="edicion">
+              <mat-label>Código</mat-label>
+              <input matInput placeholder="1" formControlName="hid_Conjunto" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <mat-select formControlName="hid_usuario" >
+              @for (u of listaUsuarios; track u) {
+              <mat-option [value]="u.id">{{ u.username }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <br>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombre del Conjunto</mat-label>
+                <input matInput placeholder="Conjunto para salir de fiesta" formControlName="hnombre_Conjunto" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nombre de la Galeria</mat-label>
+                <mat-select formControlName="hid_Galeria">
+                    @for (g of listaGaleria; track g) {
+                        <mat-option [value]="g.idGaleria">{{ g.nombreGaleria }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha de Creación</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="hfecha_Creacion" placeholder="MM/DD/YYYY" />
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha de Modificación</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="hfecha_Modificacion" placeholder="MM/DD/YYYY" />
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button mat-flat-button color="primary" class="custom-button" style="padding: 10px 20px; background-color: #3f51b5; color: white; font-size: 16px;" >Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

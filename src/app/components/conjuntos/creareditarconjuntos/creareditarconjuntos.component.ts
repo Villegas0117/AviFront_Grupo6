@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Conjuntos } from '../../../models/Conjuntos';
 import { Usuarios } from '../../../models/Usuarios';
 import { galerias } from '../../../models/Galerias';
@@ -7,11 +7,25 @@ import { ConjuntosService } from '../../../services/conjuntos.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { GaleriasService } from '../../../services/galerias.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-creareditarconjuntos',
   standalone: true,
-  imports: [],
+  imports: [MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    CommonModule,],
   templateUrl: './creareditarconjuntos.component.html',
   styleUrl: './creareditarconjuntos.component.css'
 })
