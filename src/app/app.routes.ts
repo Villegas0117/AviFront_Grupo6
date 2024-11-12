@@ -3,8 +3,6 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { PrendasComponent } from './components/prendas/prendas.component';
 import { ConjuntosComponent } from './components/conjuntos/conjuntos.component';
-import { CreareditarprendasComponent } from './components/prendas/creareditarprendas/creareditarprendas.component';
-import { CreareditarconjuntoComponent } from './components/conjuntos/creareditarconjunto/creareditarconjunto.component';
 import { CreareditarusuariosComponent } from './components/usuarios/creareditarusuarios/creareditarusuarios.component';
 import { CreareditarrolesComponent } from './components/roles/creareditarroles/creareditarroles.component';
 import { CreareditargaleriaComponent } from './components/galeria/creareditargaleria/creareditargaleria.component';
@@ -64,11 +62,11 @@ export const routes: Routes = [
     children: [
       {
         path: 'nuevo',
-        component: CreareditarconjuntoComponent,
+        component: CreareditarconjuntosComponent,
       },
       {
         path: 'ediciones/:id',
-        component: CreareditarconjuntoComponent,
+        component: CreareditarconjuntosComponent,
       },
     ],
   },
