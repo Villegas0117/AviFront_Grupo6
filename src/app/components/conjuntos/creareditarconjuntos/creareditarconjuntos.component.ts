@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Conjuntos } from '../../../models/Conjuntos';
-import { galerias } from '../../../models/Galerias';
 import { Usuarios } from '../../../models/Usuarios';
 import { ConjuntosService } from '../../../services/conjuntos.service';
 import { UsuarioService } from '../../../services/usuario.service';
