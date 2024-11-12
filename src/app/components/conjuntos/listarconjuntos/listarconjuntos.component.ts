@@ -1,31 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Conjuntos } from '../../../models/Conjuntos';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ConjuntosService } from '../../../services/conjuntos.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-listarconjuntos',
   standalone: true,
-  imports: [MatTableModule, CommonModule, MatIconModule,RouterLink],
+  imports: [
+    MatTableModule,
+    CommonModule,
+    MatIconModule,
+    RouterLink,
+    MatPaginator,
+  ],
   templateUrl: './listarconjuntos.component.html',
-  styleUrl: './listarconjuntos.component.css'
+  styleUrl: './listarconjuntos.component.css',
 })
 export class ListarconjuntosComponent implements OnInit {
   dataSource: MatTableDataSource<Conjuntos> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6',  'accion01','accion02'];
+  displayedColumns: string[] = [
+    'c1',
+    'c2',
+    'c3',
+    'c4',
+    'c5',
+    'c6',
+    'accion01',
+    'accion02',
+  ];
+
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private cS: ConjuntosService) {}
 
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
     //Subscribe para traer data
     this.cS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
   }
   eliminar(id: number) {

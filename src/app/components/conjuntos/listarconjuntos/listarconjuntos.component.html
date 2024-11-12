@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div class="container">
     <div style="text-align: center;margin: 10%;"><h1>Lista de Conjuntos</h1></div>
     <div>
@@ -51,6 +52,90 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
+=======
+<div>
+  <div style="text-align: center;margin: 2%;">
+    <h1>Lista de Conjuntos</h1>
+>>>>>>> Stashed changes
   </div>
-  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
 
+      <ng-container matColumnDef="c1">
+
+        <th mat-header-cell *matHeaderCellDef> Código </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.id_Conjunto }} </td>
+
+      </ng-container>
+
+      <ng-container matColumnDef="c2">
+
+        <th mat-header-cell *matHeaderCellDef> Nombre Usuario </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.id_Usuario.username }} </td>
+
+      </ng-container>
+
+      <ng-container matColumnDef="c3">
+
+        <th mat-header-cell *matHeaderCellDef> Nombre del Conjunto </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.nombre_Conjunto }} </td>
+
+      </ng-container>
+
+      <ng-container matColumnDef="c4">
+
+        <th mat-header-cell *matHeaderCellDef> Galeria </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.id_Galeria.nombreGaleria }} </td>
+
+      </ng-container>
+
+      <ng-container matColumnDef="c5">
+
+        <th mat-header-cell *matHeaderCellDef> Fecha Creacion</th>
+
+        <td mat-cell *matCellDef="let element"> {{element.fecha_Creacion}} </td>
+
+      </ng-container>
+
+      
+      <ng-container matColumnDef="c6">
+
+        <th mat-header-cell *matHeaderCellDef> Fecha Modificacion </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.fecha_Modificacion}} </td>
+
+      </ng-container>
+
+      <ng-container matColumnDef="accion01">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let element" (click)="eliminar(element.id_Conjunto)">
+          <mat-icon style="color:#eb0a21">delete</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="accion02">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['ediciones',element.id_Conjunto]">
+          <mat-icon style="color:#0aeb4e">edit</mat-icon>
+        </td>
+      </ng-container>
+
+
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <!-- Paginación -->
+    <mat-paginator [pageSizeOptions]="[5, 10 , 20]" showFirstLastButtons></mat-paginator>
+
+  </div>
+</div>
