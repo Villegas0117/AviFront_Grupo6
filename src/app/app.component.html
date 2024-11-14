@@ -1,41 +1,48 @@
-<mat-toolbar class="custom-toolbar">
-      <mat-icon>menu</mat-icon>
-      <div>
-            <button mat-button [matMenuTriggerFor]="menuAVIUsuarios"
-            style="color: white;"><mat-icon>perm_identity</mat-icon>Usuarios</button>
+<mat-toolbar class="custom-toolbar" *ngIf="verificar()">
+      <div class="left-menu">
+            <button mat-button [routerLink]="['/homes']" style="color: white">
+                  <mat-icon>home</mat-icon>Home
+            </button>
+            <button mat-button [matMenuTriggerFor]="menuAVIUsuarios" style="color: white;" *ngIf="esAdministrador()">
+                  <mat-icon>perm_identity</mat-icon>Usuarios</button>
 
-            
-            <button mat-button [matMenuTriggerFor]="menuAVIRoles"
-                  style="color: white;"><mat-icon>verified_user</mat-icon>Roles</button>
+            <button mat-button [matMenuTriggerFor]="menuAVIRoles" style="color: white;" *ngIf="esAdministrador()">
+                  <mat-icon>verified_user</mat-icon>Roles</button>
 
-            <button mat-button [matMenuTriggerFor]="menuAVIgaleria" style="color: white">
+            <button mat-button [matMenuTriggerFor]="menuAVIgaleria" style="color: white" *ngIf="esCreador()">
                   <mat-icon>library_add</mat-icon> Galeria
             </button>
-
             <button mat-button [matMenuTriggerFor]="menuAVIconjunto" style="color: white">
                   <mat-icon>library_add</mat-icon> Conjunto semanal
             </button>
 
+            <button mat-button [matMenuTriggerFor]="menuAVIPrendas" style="color: white;" *ngIf="esCreador()">
+                  <mat-icon>layers</mat-icon>Prendas</button>
+            <button mat-button [matMenuTriggerFor]="menuAVIConjuntos" style="color: white;" *ngIf="esCreador()">
+                  <mat-icon>layers</mat-icon>Conjuntos</button>
 
-            <button mat-button [matMenuTriggerFor]="menuAVIPrendas"
-                  style="color: white;"><mat-icon>layers</mat-icon>Prendas</button>
+            <button mat-button [matMenuTriggerFor]="menuAVIRecomendaciones" style="color: white;" *ngIf="esCreador()">
+                  <mat-icon>layers</mat-icon>Recomendaciones </button>
 
-            <button mat-button [matMenuTriggerFor]="menuAVIConjuntos"
-                  style="color: white;"><mat-icon>layers</mat-icon>Conjuntos</button>
-
-            <button mat-button [matMenuTriggerFor]="menuAVIRecomendaciones"
-                  style="color: white;"><mat-icon>layers</mat-icon>Recomendaciones </button>
-
-            <button mat-button [matMenuTriggerFor]="menuAVITendencias"
-                  style="color: white;"><mat-icon>layers</mat-icon>Tendencias</button>
+            <button mat-button [matMenuTriggerFor]="menuAVITendencias" style="color: white;" *ngIf="esCreador()">
+                  <mat-icon>layers</mat-icon>Tendencias</button>
 
       </div>
+      <div class="right-menu">
+            <button mat-button [matMenuTriggerFor]="menuSalir" style="color: white">
+                  <mat-icon>person</mat-icon>Usuario
+            </button>
+      </div>
+</mat-toolbar>
+
+<mat-toolbar class="custom-toolbar">
+      <mat-icon>menu</mat-icon>
+
 </mat-toolbar>
 <mat-menu #menuAVIUsuarios="matMenu">
       <button mat-menu-item routerLink="/usuarios">Ver Usuarios</button>
       <button mat-menu-item routerLink="/usuarios/nuevo">Registrar un Usuario</button>
 </mat-menu>
-
 
 
 <mat-menu #menuAVIgaleria="matMenu">
@@ -55,7 +62,7 @@
 </mat-menu>
 
 <mat-menu #menuAVITendencias="matMenu">
-      
+
       <button mat-menu-item routerLink="/tendencias">Ver Tendencias</button>
       <button mat-menu-item routerLink="/tendencias/nuevo">Registrar una Tendencia</button>
 </mat-menu>
@@ -78,6 +85,14 @@
 
 </mat-menu>
 
-<router-outlet></router-outlet>
-
+<mat-menu #menuSalir="matMenu">
+      <button mat-menu-item routerLink="/login" (click)="cerrar()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar sesión</span>
+      </button>
+      <button mat-menu-item>
+            Rol:
+            <span>{{ role }}</span>
+      </button>
+</mat-menu>
 <router-outlet></router-outlet>

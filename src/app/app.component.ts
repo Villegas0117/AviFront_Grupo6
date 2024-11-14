@@ -8,8 +8,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { PrendasComponent } from './components/prendas/prendas.component';
 import { ConjuntosComponent } from './components/conjuntos/conjuntos.component';
+import { LoginService } from './services/login.service';
 
 import { RecomendacionesComponent } from './components/recomendaciones/recomendaciones.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -27,11 +29,30 @@ import { RecomendacionesComponent } from './components/recomendaciones/recomenda
     MatButtonModule,
     RouterModule,
     RouterLink,
-    RouterModule
+    RouterModule,
+    CommonModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'Avi_Front';
+  role: string = '';
+  constructor(private loginService: LoginService) {}
+  cerrar() {
+    sessionStorage.clear();
+  }
+
+  verificar() {
+    this.role = this.loginService.showRole();
+    return this.loginService.verificar();
+  }
+  esAdministrador() {
+    return this.role === 'ADMINISTRADOR';
+  }
+
+  esCreador(){
+    return this.role === 'CREADOR';
+  }
+
 }
