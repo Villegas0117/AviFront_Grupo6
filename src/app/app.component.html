@@ -28,6 +28,11 @@
 
             <button mat-button [matMenuTriggerFor]="menuAVITendencias"
                   style="color: white;"><mat-icon>layers</mat-icon>Tendencias</button>
+            <button mat-button [matMenuTriggerFor]="menuAVITendencias"
+                  style="color: white;"><mat-icon>layers</mat-icon>Tendencias</button>
+            
+            <button mat-button [matMenuTriggerFor]="menuAVIReportes"
+                  style="color: white;"><mat-icon>layers</mat-icon>Reportes</button>
 
       </div>
 </mat-toolbar>
@@ -75,6 +80,26 @@
 
       <button mat-menu-item routerLink="/Conjuntos_semanal">Ver Conjuntos</button>
       <button mat-menu-item routerLink="/Conjuntos_semanal/registrar">Registrar un Conjunto</button>
+
+</mat-menu>
+
+<mat-menu #menuAVIReportes="matMenu">
+
+      <button mat-menu-item routerLink="/reportes/galeriaporusuario">
+            <mat-icon> pie_chart</mat-icon>
+            Ver reporte de galeria por usuario</button>
+      <button mat-menu-item routerLink="/reportes/galeriafechaporusuario">
+            <mat-icon> table_chart</mat-icon>
+            Ver reporte de fecha mas reciente galeria por usuario
+      </button>
+      <button mat-menu-item routerLink="/reportes/conjuntosemanalbuscar1">
+            <mat-icon> bubble_chart</mat-icon>
+            Reporte conjunto semanal por usuario
+      </button>
+      <button mat-menu-item routerLink="/reportes/conjuntosemanaldia">
+            <mat-icon> bar_chart</mat-icon>
+            Reporte conjunto semanal por dia
+      </button>
 
 </mat-menu>
 

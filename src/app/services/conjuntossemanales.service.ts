@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ConjuntoSemanal } from '../models/Conjuntos_semanales';
 import { HttpClient } from '@angular/common/http';
+import { ConjuntoPorUsuarioDTO } from '../models/ConjuntoPorUsuarioDTO';
+import { ConjuntoDiaSemanaDTO } from '../models/ConjuntoDiaSemanaDTO';
 
 const base_url = environment.base;
 
@@ -40,4 +42,13 @@ export class ConjuntossemanalesService {
   update(co: ConjuntoSemanal) {
     return this.http.put(this.url, co);
   }
+  getconjuntoporusuario(): Observable<ConjuntoPorUsuarioDTO[]> {
+    return this.http.get<ConjuntoPorUsuarioDTO[]>(`${this.url}/conjuntosporusuariosemanal`);
+  }
+  getconjuntodia(): Observable<ConjuntoDiaSemanaDTO[]> {
+    return this.http.get<ConjuntoDiaSemanaDTO[]>(`${this.url}/conjuntospordiasemanal`);
+  }
+
+ 
+
 }
