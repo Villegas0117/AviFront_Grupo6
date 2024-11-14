@@ -15,17 +15,18 @@ import { RecomendacionesComponent } from './components/recomendaciones/recomenda
 import { CrearEditarRecomendacionesComponent } from './components/recomendaciones/crear-editar-recomendaciones/crear-editar-recomendaciones.component';
 import { CreareditarprendasComponent } from './components/prendas/creareditarprendas/creareditarprendas.component';
 import { CreareditarconjuntosComponent } from './components/conjuntos/creareditarconjuntos/creareditarconjuntos.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { seguridadGuard } from './guard/seguridad.guard';
+import { HomeComponent } from './components/home/home.component';
 export const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent
+    redirectTo: 'login',
+    pathMatch: 'full',
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'usuarios',
@@ -40,6 +41,7 @@ export const routes: Routes = [
         component: CreareditarusuariosComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'roles',
@@ -54,6 +56,7 @@ export const routes: Routes = [
         component: CreareditarrolesComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'prendas',
@@ -68,6 +71,7 @@ export const routes: Routes = [
         component: CreareditarprendasComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'conjuntos',
@@ -82,6 +86,7 @@ export const routes: Routes = [
         component: CreareditarconjuntosComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
       path: 'galerias',
@@ -95,7 +100,8 @@ export const routes: Routes = [
                   path: 'ediciones/:id',
                   component: CreareditargaleriaComponent
             }
-      ]
+      ],
+      canActivate: [seguridadGuard],
   },
   {
       path: 'Conjuntos_semanal',
@@ -109,7 +115,8 @@ export const routes: Routes = [
                   path: 'ediciones/:id',
                   component: CrearregistrarconjuntossemanalesComponent,
             }
-      ]
+      ], 
+      canActivate: [seguridadGuard],
   },
   {
       path: 'tendencias',
@@ -123,7 +130,8 @@ export const routes: Routes = [
                   path: 'ediciones/:id',
                   component: CreareditartendenciasComponent,
             }
-      ]
+      ],
+      canActivate: [seguridadGuard],
   },
   {
       path: 'recomendaciones',
@@ -137,6 +145,12 @@ export const routes: Routes = [
                   path:'ediciones/:id',
                   component : CrearEditarRecomendacionesComponent
             }
-      ]
-  }
+      ],
+      canActivate: [seguridadGuard],
+  },
+  {
+    path: 'homes',
+    component: HomeComponent,
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
 ];
