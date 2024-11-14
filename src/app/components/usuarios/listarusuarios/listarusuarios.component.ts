@@ -26,8 +26,6 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './listarusuarios.component.css',
 })
 export class ListarusuariosComponent implements OnInit {
-
-
   dataSource: MatTableDataSource<Usuarios> = new MatTableDataSource();
   displayedColumns: String[] = [
     'c1',
