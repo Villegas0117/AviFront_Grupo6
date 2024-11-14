@@ -15,7 +15,18 @@ import { RecomendacionesComponent } from './components/recomendaciones/recomenda
 import { CrearEditarRecomendacionesComponent } from './components/recomendaciones/crear-editar-recomendaciones/crear-editar-recomendaciones.component';
 import { CreareditarprendasComponent } from './components/prendas/creareditarprendas/creareditarprendas.component';
 import { CreareditarconjuntosComponent } from './components/conjuntos/creareditarconjuntos/creareditarconjuntos.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginComponent } from './components/login/login.component';
+
 export const routes: Routes = [
+  {
+    path: '',
+    component: LandingPageComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: 'usuarios',
     component: UsuariosComponent,
