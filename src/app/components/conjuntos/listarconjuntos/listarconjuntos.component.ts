@@ -7,11 +7,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-listarconjuntos',
   standalone: true,
-  imports: [
+  imports: [ 
+    MatCardModule, 
+    MatButtonModule,
     MatTableModule,
     CommonModule,
     MatIconModule,
