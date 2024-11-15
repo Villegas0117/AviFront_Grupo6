@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-listarconjuntos',
@@ -17,6 +18,7 @@ import { MatSort } from '@angular/material/sort';
     MatIconModule,
     RouterLink,
     MatPaginator,
+    MatCardModule
   ],
   templateUrl: './listarconjuntos.component.html',
   styleUrl: './listarconjuntos.component.css',

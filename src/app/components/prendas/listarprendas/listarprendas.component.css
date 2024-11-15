@@ -1,0 +1,24 @@
+
+.card-container {
+
+      display: flex;
+    
+      flex-wrap: wrap;
+    
+      gap: 20px; /* Espaciado horizontal y vertical entre cards */
+    
+      justify-content: center; /* Centra las cards */
+    
+     }
+    
+     
+    
+     .example-card {
+    
+      margin-bottom: 20px; /* Margen inferior para dar espacio a la tarjeta */
+    
+      width: 250px; /* Ajusta el ancho de las cards si lo deseas */
+    
+     }
+    
+     

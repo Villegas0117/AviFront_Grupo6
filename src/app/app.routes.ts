@@ -18,11 +18,11 @@ import { CreareditarconjuntosComponent } from './components/conjuntos/crearedita
 import { LoginComponent } from './components/login/login.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 import { HomeComponent } from './components/home/home.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
+    component: LandingPageComponent
   },
   {
     path: 'login',
@@ -89,64 +89,64 @@ export const routes: Routes = [
     canActivate: [seguridadGuard],
   },
   {
-      path: 'galerias',
-      component: GaleriaComponent,
-      children:[
-            {
-                  path: 'registrar',
-                  component: CreareditargaleriaComponent
-            },
-            {
-                  path: 'ediciones/:id',
-                  component: CreareditargaleriaComponent
-            }
-      ],
-      canActivate: [seguridadGuard],
+    path: 'galerias',
+    component: GaleriaComponent,
+    children: [
+      {
+        path: 'registrar',
+        component: CreareditargaleriaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditargaleriaComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
   {
-      path: 'Conjuntos_semanal',
-      component: ConjuntossemanalesComponent,
-      children:[
-            {
-                  path: 'registrar',
-                  component: CrearregistrarconjuntossemanalesComponent,
-            },
-            {
-                  path: 'ediciones/:id',
-                  component: CrearregistrarconjuntossemanalesComponent,
-            }
-      ], 
-      canActivate: [seguridadGuard],
+    path: 'Conjuntos_semanal',
+    component: ConjuntossemanalesComponent,
+    children: [
+      {
+        path: 'registrar',
+        component: CrearregistrarconjuntossemanalesComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CrearregistrarconjuntossemanalesComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
   {
-      path: 'tendencias',
-      component: TendenciasComponent,
-      children:[
-            {
-                  path: 'nuevo',
-                  component: CreareditartendenciasComponent,
-            },
-            {
-                  path: 'ediciones/:id',
-                  component: CreareditartendenciasComponent,
-            }
-      ],
-      canActivate: [seguridadGuard],
+    path: 'tendencias',
+    component: TendenciasComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreareditartendenciasComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditartendenciasComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
   {
-      path: 'recomendaciones',
-      component: RecomendacionesComponent,
-      children: [
-            {
-                  path: 'nuevo',
-                  component: CrearEditarRecomendacionesComponent
-            },
-            {
-                  path:'ediciones/:id',
-                  component : CrearEditarRecomendacionesComponent
-            }
-      ],
-      canActivate: [seguridadGuard],
+    path: 'recomendaciones',
+    component: RecomendacionesComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CrearEditarRecomendacionesComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CrearEditarRecomendacionesComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'homes',
