@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { PrendasService } from '../../../services/prendas.service';
 import { Prendas } from '../../../models/Prendas';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 @Component({
   selector: 'app-listarprendas',
   standalone: true,
-  imports: [MatTableModule, CommonModule, MatIconModule,RouterLink],
+  imports: [MatTableModule, CommonModule, MatIconModule,RouterLink, MatCardModule, MatButtonModule],
   templateUrl: './listarprendas.component.html',
   styleUrl: './listarprendas.component.css',
+  
 })
 export class ListarprendasComponent implements OnInit {
   dataSource: MatTableDataSource<Prendas> = new MatTableDataSource();

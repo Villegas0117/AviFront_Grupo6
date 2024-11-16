@@ -20,7 +20,20 @@ import { ReportegaleriaporusuarioComponent } from './components/reportes/reporte
 import { ReportegaleriafechaComponent } from './components/reportes/reportegaleriafecha/reportegaleriafecha.component';
 import { Reporteconjuntosemanalbuscar1Component } from './components/reportes/reporteconjuntosemanalbuscar1/reporteconjuntosemanalbuscar1.component';
 import { ReporteconjuntosemanaldiaComponent } from './components/reportes/reporteconjuntosemanaldia/reporteconjuntosemanaldia.component';
+import { LoginComponent } from './components/login/login.component';
+import { seguridadGuard } from './guard/seguridad.guard';
+import { HomeComponent } from './components/home/home.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+
 export const routes: Routes = [
+  {
+    path: '',
+    component: LandingPageComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   {
     path: 'usuarios',
     component: UsuariosComponent,
@@ -34,6 +47,7 @@ export const routes: Routes = [
         component: CreareditarusuariosComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'roles',
@@ -48,6 +62,7 @@ export const routes: Routes = [
         component: CreareditarrolesComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'prendas',
@@ -62,6 +77,7 @@ export const routes: Routes = [
         component: CreareditarprendasComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'conjuntos',
@@ -76,63 +92,54 @@ export const routes: Routes = [
         component: CreareditarconjuntosComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
-      path: 'galerias',
-      component: GaleriaComponent,
-      children:[
-            {
-                  path: 'registrar',
-                  component: CreareditargaleriaComponent
-            },
-            {
-                  path: 'ediciones/:id',
-                  component: CreareditargaleriaComponent
-            }
-      ]
+    path: 'galerias',
+    component: GaleriaComponent,
+    children: [
+      {
+        path: 'registrar',
+        component: CreareditargaleriaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditargaleriaComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
   {
-      path: 'Conjuntos_semanal',
-      component: ConjuntossemanalesComponent,
-      children:[
-            {
-                  path: 'registrar',
-                  component: CrearregistrarconjuntossemanalesComponent,
-            },
-            {
-                  path: 'ediciones/:id',
-                  component: CrearregistrarconjuntossemanalesComponent,
-            }
-      ]
+    path: 'Conjuntos_semanal',
+    component: ConjuntossemanalesComponent,
+    children: [
+      {
+        path: 'registrar',
+        component: CrearregistrarconjuntossemanalesComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CrearregistrarconjuntossemanalesComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
   {
-      path: 'tendencias',
-      component: TendenciasComponent,
-      children:[
-            {
-                  path: 'nuevo',
-                  component: CreareditartendenciasComponent,
-            },
-            {
-                  path: 'ediciones/:id',
-                  component: CreareditartendenciasComponent,
-            }
-      ]
+    path: 'tendencias',
+    component: TendenciasComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CreareditartendenciasComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreareditartendenciasComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
-  {
-      path: 'recomendaciones',
-      component: RecomendacionesComponent,
-      children: [
-            {
-                  path: 'nuevo',
-                  component: CrearEditarRecomendacionesComponent
-            },
-            {
-                  path:'ediciones/:id',
-                  component : CrearEditarRecomendacionesComponent
-            }
-      ]
-  },
+ 
   {
     path: 'reportes',
     component: ReportesComponent,
@@ -154,5 +161,25 @@ export const routes: Routes = [
         component: ReporteconjuntosemanaldiaComponent,
       },
     ]
+  },
+  {
+    path: 'recomendaciones',
+    component: RecomendacionesComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: CrearEditarRecomendacionesComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CrearEditarRecomendacionesComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
+  },
+  {
+    path: 'homes',
+    component: HomeComponent,
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
   },
 ];
