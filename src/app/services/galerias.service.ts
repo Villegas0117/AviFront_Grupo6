@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { galerias } from '../models/Galerias';
+import { Galerias } from '../models/Galerias';
 
 const base_url = environment.base;
 
@@ -12,14 +12,14 @@ const base_url = environment.base;
 export class GaleriasService {
 
   private url = `${base_url}/(/galerias`;
-  private listaCambio = new Subject<galerias[]>();
+  private listaCambio = new Subject<Galerias[]>();
 
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<galerias[]>(this.url);
+    return this.http.get<Galerias[]>(this.url);
   }
-  insert(m: galerias) {
+  insert(m: Galerias) {
     return this.http.post(this.url, m);
   }
 
@@ -27,7 +27,17 @@ export class GaleriasService {
     return this.listaCambio.asObservable();
   }
 
-  setList(listaNueva: galerias[]) {
+  setList(listaNueva: Galerias[]) {
     this.listaCambio.next(listaNueva);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+  listId(id: number){
+    return this.http.get<Galerias>(`${this.url}/${id}`);
+  }
+  update(pren: Galerias){
+    return this.http.put(this.url,pren);
   }
 }

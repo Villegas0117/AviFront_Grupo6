@@ -3,8 +3,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
-import { galerias } from '../../../models/Galerias';
-import { GaleriaService } from '../../../services/galeria.service';
+import { Galerias } from '../../../models/Galerias';
+import { GaleriasService } from '../../../services/galerias.service';
 
 @Component({
   selector: 'app-listargaleria',
@@ -14,13 +14,13 @@ import { GaleriaService } from '../../../services/galeria.service';
   styleUrl: './listargaleria.component.css'
 })
 export class ListargaleriaComponent implements OnInit{
-  dataSource: MatTableDataSource<galerias> = new MatTableDataSource();
+  dataSource: MatTableDataSource<Galerias> = new MatTableDataSource();
 
   displayedColumns:string[]=['c1','c2','c3','c4', 'c5', 'eliminar','editar']
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private gS: GaleriaService) {}
+  constructor(private gS: GaleriasService) {}
 
   ngOnInit(): void {
     this.gS.list().subscribe(data=>{

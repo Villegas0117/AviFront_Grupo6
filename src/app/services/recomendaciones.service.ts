@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { Recomendaciones } from '../models/Recomendaciones';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { RecomendacionesPorIntervaloDTO } from '../models/RecomendacionesPorIntervaloDTO';
+import { ReUsuariosConMasRecomendacionesDTO } from '../models/ReUsuariosConMasRecomendacionesDTO';
+import { ReTendenciasConMasRecomendacionesDTO } from '../models/ReTendenciasConMasRecomendacionesDTO';
 //llamar la url de localhost (api)
 const base_url = environment.base;
 @Injectable({
@@ -41,6 +44,18 @@ export class RecomendacionesService {
 
   update(reh: Recomendaciones) {
     return this.http.put(this.url, reh);
+  }
+
+  getRecomendacionesPorIntervalo(fechaInicio: Date, fechaFin: Date): Observable<RecomendacionesPorIntervaloDTO> {
+    return this.http.get<RecomendacionesPorIntervaloDTO>(`${this.url}/TotalRecomendacionesPorIntervalo?fechaInicio=${fechaInicio.toISOString()}&fechaFin=${fechaFin.toISOString()}`);
+  }
+
+  getTopUsuariosConMasRecomendaciones(topN: number): Observable<ReUsuariosConMasRecomendacionesDTO[]> {
+    return this.http.get<ReUsuariosConMasRecomendacionesDTO[]>(`${this.url}/TopUsuariosConMasRecomendaciones?topN=${topN}`);
+  }
+
+  getTopTendenciasConMasRecomendaciones(topN: number): Observable<ReTendenciasConMasRecomendacionesDTO[]> {
+    return this.http.get<ReTendenciasConMasRecomendacionesDTO[]>(`${this.url}/TopUsuariosConMasRecomendaciones?topN=${topN}`);
   }
 }
 

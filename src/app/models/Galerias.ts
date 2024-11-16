@@ -1,6 +1,6 @@
 import { Usuarios } from "./Usuarios"
 
-export class galerias{
+export class Galerias{
     idGaleria:number=0
 
     idUsuario:Usuarios= new Usuarios()
