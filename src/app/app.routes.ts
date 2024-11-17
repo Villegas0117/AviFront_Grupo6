@@ -19,6 +19,12 @@ import { LoginComponent } from './components/login/login.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { ReportegaleriaporusuarioComponent } from './components/reportes/reportegaleriaporusuario/reportegaleriaporusuario.component';
+import { ReportegaleriafechaComponent } from './components/reportes/reportegaleriafecha/reportegaleriafecha.component';
+import { Reporteconjuntosemanalbuscar1Component } from './components/reportes/reporteconjuntosemanalbuscar1/reporteconjuntosemanalbuscar1.component';
+import { ReporteconjuntosemanaldiaComponent } from './components/reportes/reporteconjuntosemanaldia/reporteconjuntosemanaldia.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -152,5 +158,28 @@ export const routes: Routes = [
     path: 'homes',
     component: HomeComponent,
     canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+  },
+  {
+    path: 'reportes',
+    component: ReportesComponent,
+    children: [
+      {
+        path: 'galeriaporusuario',
+        component: ReportegaleriaporusuarioComponent,
+      },
+      {
+        path: 'galeriafechaporusuario',
+        component: ReportegaleriafechaComponent,
+      },
+      {
+        path: 'conjuntosemanalbuscar1',
+        component: Reporteconjuntosemanalbuscar1Component,
+      },
+      {
+        path: 'conjuntosemanaldia',
+        component: ReporteconjuntosemanaldiaComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
 ];
