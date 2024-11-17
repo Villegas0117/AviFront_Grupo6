@@ -7,7 +7,7 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
   imports: [RouterModule,
     RouterLink,
     RouterModule,
-    RouterOutlet],
+    ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
