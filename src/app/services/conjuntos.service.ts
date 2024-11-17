@@ -31,6 +31,7 @@ export class ConjuntosService {
   }
   listId(id: number){
     return this.http.get<Conjuntos>(`${this.url}/${id}`);
+   // return this.http.get<Usuarios>(`${this.url}/${id}`);
   }
   update(conjun: Conjuntos){
     return this.http.put(this.url,conjun);
