@@ -1,39 +1,63 @@
 import { Component, OnInit } from '@angular/core';
 import { RecomendacionesService } from '../../../services/recomendaciones.service';
-import { BaseChartDirective } from 'ng2-charts';
-import { Chart, registerables } from 'chart.js';
-import { ChartDataset, ChartOptions, ChartType } from './../../../../../node_modules/chart.js/dist/types/index.d';
 import { RecomendacionesPorIntervaloDTO } from '../../../models/RecomendacionesPorIntervaloDTO';
-Chart.register(...registerables);
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
+import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+
 @Component({
   selector: 'app-recomendacionesxintervalo',
   standalone: true,
-  imports: [BaseChartDirective],
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CommonModule,
+    BaseChartDirective
+  ],
   templateUrl: './recomendacionesxintervalo.component.html',
-  styleUrl: './recomendacionesxintervalo.component.css'
+  styleUrls: ['./recomendacionesxintervalo.component.css'],
 })
-export class RecomendacionesxintervaloComponent implements OnInit {
+export class RecomendacionesxintervaloComponent  {
+  // Gráfico
   barChartOptions: ChartOptions = { responsive: true };
-  barChartLabels: string[] = ['Total Recomendaciones'];
-  barChartType: ChartType = 'doughnut';
+  barChartLabels: string[] = []; // Etiquetas de fechas
+  barChartType: ChartType = 'bar'; // Cambia a 'line', 'doughnut', etc., si es necesario
   barChartLegend = true;
   barChartData: ChartDataset[] = [];
+  fechaInicio: string = '';
+  fechaFin: string = '';
+  totalRecomendaciones: number | null = null;
+  error: string | null = null;
 
-  constructor(private rS: RecomendacionesService) {}
+  constructor(private recomendacionesService: RecomendacionesService) {}
 
-  ngOnInit(): void {
-    const fechaInicio = new Date(2023, 0, 1);
-    const fechaFin = new Date(2023, 11, 31);
-    
-    this.rS.getRecomendacionesPorIntervalo(fechaInicio, fechaFin).subscribe((data: RecomendacionesPorIntervaloDTO) => {
-      this.barChartLabels = [`Desde ${data.fechaInicio} hasta ${data.fechaFin}`];
-      this.barChartData = [
-        {
-          data: [data.totalRecomendaciones],
-          label: 'Total de Recomendaciones',
-          backgroundColor: '#3e95cd',
-        },
-      ];
-    });
+  obtenerReporte(): void {
+    if (!this.fechaInicio || !this.fechaFin) {
+      this.error = 'Por favor, ingresa ambas fechas.';
+      return;
+    }
+
+    this.recomendacionesService.getTotalRecomendacionesPorIntervalo(this.fechaInicio, this.fechaFin).subscribe(
+      (data) => {
+        this.totalRecomendaciones = data.totalRecomendaciones;
+        this.error = null; // Limpia cualquier error anterior
+      },
+      (err) => {
+        this.error = 'Error al obtener los datos. Por favor, verifica las fechas o intenta más tarde.';
+        this.totalRecomendaciones = null;
+        console.error(err);
+      }
+    );
   }
 }
+

@@ -1,17 +1,22 @@
-<div class="title-container">
-    <div class="title">
-      <h1>Total de Recomendaciones por Intervalo</h1>
-    </div>
-    <div class="chart-container">
-      <canvas
-        baseChart
-        [datasets]="barChartData"
-        [labels]="barChartLabels"
-        [options]="barChartOptions"
-        [legend]="barChartLegend"
-        [type]="barChartType"
-      >
-      </canvas>
-    </div>
+<div class="report-container">
+  <h1>Reporte de Recomendaciones</h1>
+  <form (submit)="obtenerReporte(); $event.preventDefault()">
+    <label for="fechaInicio">Fecha de Inicio:</label>
+    <input type="date" id="fechaInicio" [(ngModel)]="fechaInicio" name="fechaInicio" required />
+
+    <label for="fechaFin">Fecha de Fin:</label>
+    <input type="date" id="fechaFin" [(ngModel)]="fechaFin" name="fechaFin" required />
+
+    <button type="submit">Generar Reporte</button>
+  </form>
+
+  <div *ngIf="totalRecomendaciones !== null" class="result">
+    <p><strong>Total de Recomendaciones:</strong> {{ totalRecomendaciones }}</p>
   </div>
-  
+
+<!-- Errores -->
+<div *ngIf="error" class="error">
+  <p>{{ error }}</p>
+</div>
+
+

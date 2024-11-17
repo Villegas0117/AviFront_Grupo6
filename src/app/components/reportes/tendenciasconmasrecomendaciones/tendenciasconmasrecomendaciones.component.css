@@ -1,27 +1,68 @@
+/* Contenedor del título */
 .title-container {
-    text-align: center;
-    margin-bottom: 40px;
-    margin-top: 60px;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Título */
+.title h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Contenedor del gráfico */
+.chart-container {
+  margin-top: 30px;
+}
+
+/* Estilo para el canvas (gráfico) */
+canvas {
+  max-width: 100%;
+  height: 400px; /* Tamaño del gráfico */
+  margin: 0 auto;
+  display: block;
+}
+
+/* Input de búsqueda o filtro */
+input {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 15px;
+  width: 80%;
+  max-width: 400px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Diseño responsive para pantallas más pequeñas */
+@media (max-width: 600px) {
+  .title-container {
+    padding: 15px;
   }
-  
-  .title {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 2em;
-    color: #333;
+
+  .title h1 {
+    font-size: 1.5rem;
   }
-  
-  .chart-container {
-    width: 60%;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
+
+  canvas {
+    height: 300px; /* Ajuste en el tamaño para pantallas pequeñas */
   }
-  
-  @media (max-width: 768px) {
-    .chart-container {
-      width: 100%;
-      padding: 10px;
-    }
+
+  input {
+    width: 90%;
   }
-  
+}

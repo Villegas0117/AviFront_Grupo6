@@ -24,6 +24,9 @@ import { ReportegaleriaporusuarioComponent } from './components/reportes/reporte
 import { ReportegaleriafechaComponent } from './components/reportes/reportegaleriafecha/reportegaleriafecha.component';
 import { Reporteconjuntosemanalbuscar1Component } from './components/reportes/reporteconjuntosemanalbuscar1/reporteconjuntosemanalbuscar1.component';
 import { ReporteconjuntosemanaldiaComponent } from './components/reportes/reporteconjuntosemanaldia/reporteconjuntosemanaldia.component';
+import { RecomendacionesxintervaloComponent } from './components/reportes/recomendacionesxintervalo/recomendacionesxintervalo.component';
+import { TendenciasconmasrecomendacionesComponent } from './components/reportes/tendenciasconmasrecomendaciones/tendenciasconmasrecomendaciones.component';
+import { UsuariosconmasrecomendacionesComponent } from './components/reportes/usuariosconmasrecomendaciones/usuariosconmasrecomendaciones.component';
 
 export const routes: Routes = [
   {
@@ -178,6 +181,18 @@ export const routes: Routes = [
       {
         path: 'conjuntosemanaldia',
         component: ReporteconjuntosemanaldiaComponent,
+      },
+      {
+        path: 'RecomendacionesPorIntervalo',
+        component: RecomendacionesxintervaloComponent,
+      },
+      {
+        path: 'UsuariosConMasRecomendaciones',
+        component: UsuariosconmasrecomendacionesComponent,
+      },
+      {
+        path: 'TendenciasConMasRecomendaciones',
+        component: TendenciasconmasrecomendacionesComponent,
       },
     ],
     canActivate: [seguridadGuard],

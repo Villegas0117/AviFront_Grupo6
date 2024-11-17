@@ -1,27 +1,61 @@
-.title-container {
-    text-align: center;
-    margin-bottom: 40px;
-    margin-top: 60px;
-  }
-  
-  .title {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 2em;
-    color: #333;
-  }
-  
-  .chart-container {
-    width: 60%;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  @media (max-width: 768px) {
-    .chart-container {
-      width: 100%;
-      padding: 10px;
-    }
-  }
-  
+.report-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e6ffed;
+  border: 1px solid #b3ffb3;
+  border-radius: 5px;
+  color: #2c662d;
+}
+
+.error {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ffe6e6;
+  border: 1px solid #ffb3b3;
+  border-radius: 5px;
+  color: #662c2c;
+}
