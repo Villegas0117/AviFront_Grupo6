@@ -26,6 +26,10 @@
 
             <button mat-button [matMenuTriggerFor]="menuAVITendencias" style="color: white;" *ngIf="esCreador()">
                   <mat-icon>layers</mat-icon>Tendencias</button>
+            
+            <button mat-button [matMenuTriggerFor]="menuAVIReportes"
+                  style="color: white;"><mat-icon>layers</mat-icon>Reportes</button>
+
 
       </div>
       <div class="right-menu">
@@ -85,6 +89,28 @@
 
 </mat-menu>
 
+
+
+<mat-menu #menuAVIReportes="matMenu">
+
+      <button mat-menu-item routerLink="/reportes/galeriaporusuario">
+            <mat-icon> pie_chart</mat-icon>
+            Ver reporte de galeria por usuario</button>
+      <button mat-menu-item routerLink="/reportes/galeriafechaporusuario">
+            <mat-icon> table_chart</mat-icon>
+            Ver reporte de fecha mas reciente galeria por usuario
+      </button>
+      <button mat-menu-item routerLink="/reportes/conjuntosemanalbuscar1">
+            <mat-icon> bubble_chart</mat-icon>
+            Reporte conjunto semanal por usuario
+      </button>
+      <button mat-menu-item routerLink="/reportes/conjuntosemanaldia">
+            <mat-icon> bar_chart</mat-icon>
+            Reporte conjunto semanal por dia
+      </button>
+
+</mat-menu>
+
 <mat-menu #menuSalir="matMenu">
       <button mat-menu-item routerLink="/login" (click)="cerrar()">
             <mat-icon>logout</mat-icon>
@@ -95,4 +121,5 @@
             <span>{{ role }}</span>
       </button>
 </mat-menu>
+
 <router-outlet></router-outlet>
