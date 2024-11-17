@@ -72,8 +72,9 @@
           
           <!-- Imagen de la prenda -->
           
-          <!-- <img mat-card-image [src]="element.imagen_url || 'assets/img/placeholder.jpg'" alt="Imagen de la prenda"> -->
-          <img mat-card-image src="assets/img/placeholder.jpg" alt="Imagen destacada de estilo de moda" class="hero-image">
+           <!-- Imagen de la prenda -->
+          <img mat-card-image [src]="'data:image/jpeg;base64,' + element.imagen" alt="Imagen de la prenda">
+
           <mat-card-content>
             <p><strong>Código:</strong> {{ element.id_prenda }}</p>
             <p><strong>Usuario:</strong> {{ element.id_usuario.username }}</p>

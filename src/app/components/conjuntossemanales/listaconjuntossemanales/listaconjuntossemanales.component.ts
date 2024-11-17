@@ -17,7 +17,7 @@ export class ListaconjuntossemanalesComponent implements OnInit{
   dataSource: MatTableDataSource<ConjuntoSemanal> = new MatTableDataSource();
   
 
-  displayedColumns:string[]=['c1','c2','c3','c4', 'c5', 'eliminar','editar']
+  displayedColumns:string[]=['c1', 'c2', 'c3', 'c4', 'c5', 'eliminar','editar']
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

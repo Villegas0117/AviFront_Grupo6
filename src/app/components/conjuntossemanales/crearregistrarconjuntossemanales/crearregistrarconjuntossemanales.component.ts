@@ -68,7 +68,7 @@ export class CrearregistrarconjuntossemanalesComponent {
 
     this.form = this.formBuilder.group({
       hcodigo:[''],
-      hidconjunto: ['', Validators.required],
+      hid_Conjunto: ['', Validators.required],
       hidusuario: ['', Validators.required],
       hfechacreacion: ['', [Validators.required, this.fechaFuturaValidator]],
       hdiadesemana: ['', [Validators.required, this.fechaFuturaValidator]],
@@ -85,7 +85,7 @@ export class CrearregistrarconjuntossemanalesComponent {
   insertar(): void {
     if (this.form.valid) {
       this.conjsemanal.id= this.form.value.hcodigo;
-      this.conjsemanal.id_Conjunto.id_Conjunto=this.form.value.hidconjunto;
+      this.conjsemanal.id_Conjunto.id_Conjunto=this.form.value.hid_Conjunto;
       this.conjsemanal.id_usuario.id=this.form.value.hidusuario;
       this.conjsemanal.fechaCreacion=this.form.value.hfechacreacion;
       this.conjsemanal.diaDeSemana=this.form.value.hdiadesemana;
@@ -113,8 +113,8 @@ export class CrearregistrarconjuntossemanalesComponent {
       this.csS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           hcodigo: new FormControl(data.id),
-          hidconjunto: new FormControl(data.id_Conjunto),
-          hidusuario:new FormControl(data.id_usuario.username),
+          hid_Conjunto: new FormControl(data.id_Conjunto),
+          hidusuario:new FormControl(data.id_usuario),
           hfechacreacion:new FormControl(data.fechaCreacion),
           hdiadesemana:new FormControl(data.diaDeSemana),
         });
