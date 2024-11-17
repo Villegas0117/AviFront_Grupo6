@@ -24,12 +24,13 @@
             <button mat-button [matMenuTriggerFor]="menuAVIRecomendaciones" style="color: white;" *ngIf="esCreador()">
                   <mat-icon>layers</mat-icon>Recomendaciones </button>
 
+            <button mat-button [matMenuTriggerFor]="menuAVITendencias" style="color: white;" *ngIf="esCreador()">
+                  <mat-icon>layers</mat-icon>Tendencias</button>
+
             
             <button mat-button [matMenuTriggerFor]="menuAVIReportes"
                   style="color: white;"><mat-icon>layers</mat-icon>Reportes</button>
 
-            <button mat-button [matMenuTriggerFor]="menuAVITendencias" style="color: white;" *ngIf="esCreador()">
-                  <mat-icon>layers</mat-icon>Tendencias</button>
 
       </div>
       <div class="right-menu">
@@ -90,6 +91,9 @@
 </mat-menu>
 
 
+
+
+
 <mat-menu #menuAVIReportes="matMenu">
 
       <button mat-menu-item routerLink="/reportes/galeriaporusuario">
@@ -122,3 +126,4 @@
 </mat-menu>
 
 <router-outlet></router-outlet>
+

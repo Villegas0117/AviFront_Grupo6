@@ -15,15 +15,23 @@ import { RecomendacionesComponent } from './components/recomendaciones/recomenda
 import { CrearEditarRecomendacionesComponent } from './components/recomendaciones/crear-editar-recomendaciones/crear-editar-recomendaciones.component';
 import { CreareditarprendasComponent } from './components/prendas/creareditarprendas/creareditarprendas.component';
 import { CreareditarconjuntosComponent } from './components/conjuntos/creareditarconjuntos/creareditarconjuntos.component';
+
+import { LoginComponent } from './components/login/login.component';
+import { seguridadGuard } from './guard/seguridad.guard';
+import { HomeComponent } from './components/home/home.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportegaleriaporusuarioComponent } from './components/reportes/reportegaleriaporusuario/reportegaleriaporusuario.component';
 import { ReportegaleriafechaComponent } from './components/reportes/reportegaleriafecha/reportegaleriafecha.component';
 import { Reporteconjuntosemanalbuscar1Component } from './components/reportes/reporteconjuntosemanalbuscar1/reporteconjuntosemanalbuscar1.component';
 import { ReporteconjuntosemanaldiaComponent } from './components/reportes/reporteconjuntosemanaldia/reporteconjuntosemanaldia.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+
 
 export const routes: Routes = [
   {
@@ -139,7 +147,7 @@ export const routes: Routes = [
     ],
     canActivate: [seguridadGuard],
   },
- 
+
   {
     path: 'reportes',
     component: ReportesComponent,
@@ -160,7 +168,9 @@ export const routes: Routes = [
         path: 'conjuntosemanaldia',
         component: ReporteconjuntosemanaldiaComponent,
       },
-    ]
+
+    ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'recomendaciones',
@@ -182,4 +192,5 @@ export const routes: Routes = [
     component: HomeComponent,
     canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
   },
+
 ];

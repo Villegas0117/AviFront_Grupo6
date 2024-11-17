@@ -18,18 +18,13 @@ export class LoginService {
   }
   showRole() {
     let token = sessionStorage.getItem('token');
-  
-    console.log("Token sin decodificar: ",token)
     if (!token) {
       // Manejar el caso en el que el token es nulo.
       return null; // O cualquier otro valor predeterminado dependiendo del contexto.
     }
     const helper = new JwtHelperService();
     //Console Log
-   
     const decodedToken = helper.decodeToken(token);
-
-    console.log("Token decodificado: ",decodedToken) 
     return decodedToken?.role;
   }
 }
