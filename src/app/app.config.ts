@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
     importProvidersFrom(
       JwtModule.forRoot({

@@ -33,7 +33,6 @@ export class ListargaleriaComponent implements OnInit{
     })
   }
   ngAfterViewInit() {
-    
     this.dataSource.paginator = this.paginator;
   }
 

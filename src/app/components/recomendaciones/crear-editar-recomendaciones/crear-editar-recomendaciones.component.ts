@@ -48,7 +48,6 @@ export class CrearEditarRecomendacionesComponent{
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-
     private uS: UsuarioService,
     private tS: TendenciasService,
   ) {}

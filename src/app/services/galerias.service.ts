@@ -13,7 +13,7 @@ const base_url = environment.base;
 })
 export class GaleriasService {
 
-  private url = `${base_url}/(/galerias`;
+  private url = `${base_url}/galerias`;
   private listaCambio = new Subject<galerias[]>();
 
   constructor(private http: HttpClient) {}
