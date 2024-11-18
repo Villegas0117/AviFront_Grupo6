@@ -1,0 +1,31 @@
+.card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px; /* Espacio entre las tarjetas */
+    }
+    
+    .example-card {
+      flex: 1 1 calc(25% - 20px); /* 25% de ancho para 4 tarjetas en una fila */
+      box-sizing: border-box; /* Asegura que los márgenes no afecten al ancho de las tarjetas */
+      margin: 10px 0; /* Espacio vertical entre las tarjetas */
+    }
+    
+    /* Estilo adicional para asegurar que las tarjetas no se estiren demasiado */
+    @media (max-width: 1200px) {
+      .example-card {
+        flex: 1 1 calc(33.33% - 20px); /* 3 columnas en pantallas medianas */
+      }
+    }
+    
+    @media (max-width: 800px) {
+      .example-card {
+        flex: 1 1 calc(50% - 20px); /* 2 columnas en pantallas pequeñas */
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .example-card {
+        flex: 1 1 100%; /* 1 columna en pantallas muy pequeñas */
+      }
+    }
