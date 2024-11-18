@@ -24,11 +24,17 @@ import { ReportegaleriaporusuarioComponent } from './components/reportes/reporte
 import { ReportegaleriafechaComponent } from './components/reportes/reportegaleriafecha/reportegaleriafecha.component';
 import { Reporteconjuntosemanalbuscar1Component } from './components/reportes/reporteconjuntosemanalbuscar1/reporteconjuntosemanalbuscar1.component';
 import { ReporteconjuntosemanaldiaComponent } from './components/reportes/reporteconjuntosemanaldia/reporteconjuntosemanaldia.component';
+import { SingUpComponent } from './components/sing-up/sing-up.component';
+import { RecomendacionPrendasComponent } from './components/prendas/recomendacion-prendas/recomendacion-prendas.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent
+    component: LandingPageComponent,
+  },
+  {
+    path: 'signUp',
+    component: SingUpComponent,
   },
   {
     path: 'login',
@@ -75,6 +81,10 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: CreareditarprendasComponent,
+      },
+      {
+        path: 'recomendadas-clima',
+        component: RecomendacionPrendasComponent,
       },
     ],
     canActivate: [seguridadGuard],
