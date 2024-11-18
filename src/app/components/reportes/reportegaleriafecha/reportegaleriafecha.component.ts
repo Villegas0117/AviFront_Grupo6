@@ -1,16 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GaleriaService } from '../../../services/galeria.service';
 import { GaleriaUserDTO } from '../../../models/GaleriaUserDTO';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
-
+import { GaleriasService } from '../../../services/galerias.service';
 
 @Component({
   selector: 'app-reportegaleriafecha',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterLink, MatPaginator],
+  imports: [MatTableModule, MatIconModule, MatPaginator],
   templateUrl: './reportegaleriafecha.component.html',
   styleUrl: './reportegaleriafecha.component.css'
 })
@@ -21,7 +19,7 @@ export class ReportegaleriafechaComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private gS: GaleriaService) {}
+  constructor(private gS: GaleriasService) {}
 
   ngOnInit(): void {
     this.gS.getfechagaleria().subscribe(data=>{

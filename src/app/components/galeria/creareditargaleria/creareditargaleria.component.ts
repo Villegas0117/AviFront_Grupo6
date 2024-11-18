@@ -13,11 +13,11 @@ import {
 } from '@angular/forms';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { galerias } from '../../../models/Galerias';
-import { GaleriaService } from '../../../services/galeria.service';
 import { CommonModule } from '@angular/common';
 import { Usuarios } from '../../../models/Usuarios';
 import { UsuarioService } from '../../../services/usuario.service';
+import { Galerias } from '../../../models/Galerias';
+import { GaleriasService } from '../../../services/galerias.service';
 
 @Component({
   selector: 'app-creareditargaleria',
@@ -36,14 +36,14 @@ import { UsuarioService } from '../../../services/usuario.service';
 })
 export class CreareditargaleriaComponent {
   form: FormGroup = new FormGroup({});
-  galeria: galerias = new galerias();
+  galeria: Galerias = new Galerias();
   listausuarios: Usuarios[]= [];
 
   id: number = 0;
   edicion: boolean = false;
 
   constructor(
-    private gS: GaleriaService,
+    private gS: GaleriasService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
