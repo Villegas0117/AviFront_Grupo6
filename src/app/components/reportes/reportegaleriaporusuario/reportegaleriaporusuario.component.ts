@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { GaleriaService } from '../../../services/galeria.service';
 import { Chart, registerables } from 'chart.js';
+import { GaleriasService } from '../../../services/galerias.service';
 Chart.register(...registerables)
 
 @Component({
@@ -25,7 +25,7 @@ export class ReportegaleriaporusuarioComponent implements OnInit{
 
   barChartLegend = true;
   barChartData: ChartDataset[] = [];
-  constructor(private gs: GaleriaService) {}
+  constructor(private gs: GaleriasService) {}
 
   ngOnInit(): void {
     this.gs.getcantusaurioporgaleria().subscribe((data) => {

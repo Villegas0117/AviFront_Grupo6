@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
+import { Galerias } from '../models/Galerias';
 import { Observable, Subject } from 'rxjs';
-import { galerias } from '../models/Galerias';
 import { GaleriaTotalUsuarioDTO } from '../models/GaleriaTotalUsuarioDTO';
 import { GaleriaUserDTO } from '../models/GaleriaUserDTO';
 
@@ -13,15 +13,14 @@ const base_url = environment.base;
 })
 export class GaleriasService {
 
-  private url = `${base_url}/galerias`;
-  private listaCambio = new Subject<galerias[]>();
-
+  private url = `${base_url}/(/galerias`;
+  private listaCambio = new Subject<Galerias[]>();
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<galerias[]>(this.url);
+    return this.http.get<Galerias[]>(this.url);
   }
-  insert(m: galerias) {
+  insert(m: Galerias) {
     return this.http.post(this.url, m);
   }
 
@@ -29,19 +28,18 @@ export class GaleriasService {
     return this.listaCambio.asObservable();
   }
 
-  setList(listaNueva: galerias[]) {
+  setList(listaNueva: Galerias[]) {
     this.listaCambio.next(listaNueva);
   }
+
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
-
-  listId(id: number) {
-    return this.http.get<galerias>(`${this.url}/${id}`);
+  listId(id: number){
+    return this.http.get<Galerias>(`${this.url}/${id}`);
   }
-
-  update(ga: galerias) {
-    return this.http.put(this.url, ga);
+  update(pren: Galerias){
+    return this.http.put(this.url,pren);
   }
   getcantusaurioporgaleria(): Observable<GaleriaTotalUsuarioDTO[]> {
     return this.http.get<GaleriaTotalUsuarioDTO[]>(`${this.url}/galeríaPorUsuario`);

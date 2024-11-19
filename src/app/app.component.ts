@@ -9,7 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { PrendasComponent } from './components/prendas/prendas.component';
 import { ConjuntosComponent } from './components/conjuntos/conjuntos.component';
 import { LoginService } from './services/login.service';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { RecomendacionesComponent } from './components/recomendaciones/recomendaciones.component';
 import { CommonModule } from '@angular/common';
 
@@ -31,6 +32,8 @@ import { CommonModule } from '@angular/common';
     RouterLink,
     RouterModule,
     CommonModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

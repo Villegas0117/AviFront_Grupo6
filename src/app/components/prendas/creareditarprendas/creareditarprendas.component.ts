@@ -100,15 +100,15 @@ export class CreareditarprendasComponent implements OnInit {
         // Quitar el prefijo 'data:image/jpeg;base64,' o similares
         const base64WithoutPrefix = base64String.replace(/^data:image\/[a-z]+;base64,/, '');
   
-  
         // Actualiza el formulario con la imagen en base64 sin el prefijo
-        this.formulario.patchValue({
-          imagen: base64WithoutPrefix,
+        this.form.patchValue({
+          himagen: base64WithoutPrefix,
         });
       };
       reader.readAsDataURL(file); // Convierte la imagen en base64
     }
   }
+  
   
 
   ngOnInit(): void {
@@ -140,27 +140,31 @@ export class CreareditarprendasComponent implements OnInit {
       this.prenda.id_usuario.id = this.form.value.hid_usuario;
       this.prenda.nombre_prenda = this.form.value.hnombre_prenda;
       this.prenda.tipo_prenda = this.form.value.htipo_prenda;
-      this.prenda.imagen = this.formulario.value.imagen;
+      this.prenda.imagen = this.form.value.himagen;
       this.prenda.fecha_creacion = this.form.value.hfecha_creacion;
       this.prenda.fecha_modificacion = this.form.value.hfecha_modificacion;
-
-      if(this.edition){
-        this.pS.update(this.prenda).subscribe((data)=> {
-          this.pS.list().subscribe((data)=>{
-            this.pS.setList(data)
+  
+     
+  
+      if (this.edition) {
+        this.pS.update(this.prenda).subscribe((data) => {
+          this.pS.list().subscribe((data) => {
+            this.pS.setList(data);
           });
         });
-      } else{
-        this.pS.insert(this.prenda).subscribe((data)=>{
-          this.pS.list().subscribe((data)=>{
+      } else {
+        this.pS.insert(this.prenda).subscribe((data) => {
+          this.pS.list().subscribe((data) => {
             this.pS.setList(data);
           });
         });
       }
-    
-    }
-    this.router.navigate(['prendas']);
+  
+      this.router.navigate(['prendas']);
+    } 
   }
+  
+  
 
   init() {
     if (this.edition) {
@@ -178,4 +182,3 @@ export class CreareditarprendasComponent implements OnInit {
     }
   }
 }
-//

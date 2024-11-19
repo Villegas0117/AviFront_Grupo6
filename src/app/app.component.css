@@ -1,7 +1,94 @@
-.custom-toolbar {
-
-      background-color: #ef0404;
-    
+body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden; 
+  }
+  
+  .sidenav {
+      width: 250px;
+      background-color: #f9f5f3;
+      border-right: 2px solid #b03030;
+      height: 100%; 
+      display: flex;
+      flex-direction: column;
+      border-radius: 0;
+  }
+  
+  .sidenav-header {
+      background-color: #f26c6c;
       color: white;
-    
-     }
+      padding: 1rem;
+      text-align: center;
+  }
+  
+  .menu-section {
+      padding: 1rem 0.5rem;
+      flex-grow: 1;
+  }
+  
+  .menu-section h4 {
+      font-size: 1.2rem;
+      color: #b03030; /* Mantén este color */
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #f26c6c;
+  }
+  
+  button[mat-button] {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0.5rem;
+      margin: 0.2rem 0;
+      border-radius: 8px;
+      color: #e74c3c; /* Cambiado a un rojo claro */
+      font-size: 0.9rem;
+      transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  button[mat-button]:hover {
+      background-color: #ffb3b3;
+      transform: scale(1.03);
+  }
+  
+  button[mat-button] mat-icon {
+      margin-right: 0.5rem;
+      color: #e74c3c; /* Mantén este color */
+  }
+  
+  .custom-toolbar {
+      background-color: #a52a2a;
+      color: white;
+      display: flex;
+      justify-content: flex-end; 
+      padding: 0.5rem 1rem;
+  }
+  
+  .right-menu button {
+      color: #ffffff; /* Cambiado a un rojo claro */
+      font-weight: bold;
+  }
+  
+  .right-menu button:hover {
+      background-color: #f26c6c;
+  }
+  
+  .mat-menu-item {
+      font-size: 0.9rem;
+      color: #e74c3c; /* Cambiado a un rojo claro */
+  }
+  
+  .mat-menu-item:hover {
+      background-color: #f26c6c;
+      color: white;
+  }
+  
+  /* Corrige el color claro de los elementos inactivos */
+  .mat-menu-item span {
+      color: #e74c3c; /* Cambiado a un rojo claro */
+  }
+  
+  .mat-menu-item:hover span {
+      color: white;
+  }

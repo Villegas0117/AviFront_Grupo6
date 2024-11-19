@@ -13,6 +13,7 @@ const base_url = environment.base;
 export class UsuarioService {
   private url = `${base_url}/usuarios`;
   private  listaCambio = new Subject<Usuarios[]>();
+  private url2= `${base_url}/usuarios/signUp`;
 
   constructor(private http: HttpClient, ) { }
   list(){
@@ -40,4 +41,13 @@ export class UsuarioService {
   update(us : Usuarios){
     return this.http.put(this.url,us);
   }
+
+  listNoAuth(email : string){
+    return this.http.get<Usuarios>(`${this.url}/NoAuth${email}`);
+  }
+
+  insertNoAuth(u: Usuarios){
+    return this.http.post(this.url2,u);
+  }
+
 }

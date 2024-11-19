@@ -1,0 +1,35 @@
+<div class="container">
+  <div style="text-align: center; margin: 2%;">
+    <h1>Prendas Recomendadas según el Clima</h1>
+  </div>
+  <div class="temperature" style="text-align: center;" > 
+    <h2>Temperatura Actual: {{ temperaturaActual }} °C</h2>
+  </div>
+
+  <!-- Mostrar las prendas recomendadas si hay prendas -->
+  <div *ngIf="prendasRecomendadas.length > 0; else noPrendas">
+    <div class="card-container">
+      <mat-card *ngFor="let prenda of prendasRecomendadas" class="example-card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>{{ prenda.nombre_prenda }}</mat-card-title>
+          <mat-card-subtitle>{{ prenda.tipo_prenda }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <!-- Imagen de la prenda -->
+        <img mat-card-image [src]="'data:image/jpeg;base64,' + prenda.imagen" alt="Imagen de la prenda">
+
+        <mat-card-content>
+          <p><strong>Código:</strong> {{ prenda.id_prenda }}</p>
+          <p><strong>Usuario:</strong> {{ prenda.id_usuario.username }}</p>
+          <p><strong>Fecha de creación:</strong> {{ prenda.fecha_creacion | date:'dd MMMM yyyy' }}</p>
+          <p><strong>Fecha de modificación:</strong> {{ prenda.fecha_modificacion | date:'dd MMMM yyyy' }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Mostrar mensaje cuando no hay prendas recomendadas -->
+  <ng-template #noPrendas>
+    <p style="text-align: center;">No hay prendas recomendadas para este clima.</p>
+  </ng-template>
+</div>

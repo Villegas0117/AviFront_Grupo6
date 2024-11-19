@@ -1,4 +1,5 @@
-<div class="carousel-container">
+<div class="home-container">
+  <div class="carousel-container">
     <div class="carousel" id="imageCarousel">
       <img src="assets/img/imagen5.jpg" alt="Imagen 1">
       <img src="assets/img/imagen6.jpg" alt="Imagen 2">
@@ -8,24 +9,20 @@
       <img src="assets/img/imagen2.jpg" alt="Imagen 6">
     </div>
   </div>
-<div class="welcome-box">
-    <h2>Hola de Nuevo!</h2>
-    <p>¿Qué vamos a hacer hoy?</p>
-    <button class="action-button">Crear un conjunto</button>
-    <button class="action-button">Ver mi ropa</button>
-  </div>
-  
-  <div class="center-box">
-    <h3>Bienvenido a tu armario</h3>
-    <p>Explora tus opciones</p>
-    <button class="empty-button">Opción 1</button>
-    <button class="empty-button">Opción 2</button>
-  </div>
-  
 
-  
-  <footer class="footer">
-    <p>© 2024 Avi. Todos los derechos reservados.</p>
-    <p>Síguenos en: <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a></p>
-  </footer>
-  
+  <div class="content-container">
+    <div class="welcome-box">
+      <h2>Hola de Nuevo!</h2>
+      <p>¿Qué vamos a hacer hoy?</p>
+      <button class="action-button" routerLink="/conjuntos/nuevo">Crear un conjunto</button>
+      <button class="action-button" routerLink="/prendas">Visualizar mi ropa</button>
+    </div>
+
+    <div class="center-box">
+      <h3>Bienvenido a tu armario</h3>
+      <p>Explora tus opciones</p>
+      <button class="empty-button" routerLink="/tendencias">Tendencias</button>
+      <button class="empty-button" routerLink="/galerias">Galeria</button>
+    </div>
+  </div>
+</div>
