@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 
 
+
 @Component({
   selector: 'app-reportegaleriafecha',
   standalone: true,
