@@ -1,4 +1,9 @@
-<form [formGroup]="form" (submit)="insertar()" style="display: flex; flex-direction: column; gap: 15px;">
+<div style="max-width: 800px; margin: 0 auto; padding: 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); border-radius: 8px; background-color: #f9f9f9;">
+  <div [ngClass]="{ 'edit-mode': edition, 'register-mode': !edition }" style="text-align: center; margin: 2%;">
+     <h1>{{ edition ? 'Actualizar Prendas' : 'Registrar Prendas' }}</h1>
+    </div>
+  <form [formGroup]="form" (submit)="insertar()" style="display: flex; flex-direction: column; gap: 15px;">
+
     <mat-form-field class="example-full-width" appearance="fill" *ngIf="edition">
       <mat-label>Código</mat-label>
       <input matInput placeholder="1" formControlName="hid" />
@@ -24,7 +29,7 @@
     </mat-form-field>
   
     <div class="file-upload">
-      <label for="fileInput" class="btn-upload">Seleccionar archivo</label>
+      <label for="fileInput" class="btn-upload">Subir Imagen</label>
       <input #fileInput type="file" (change)="onFileSelect($event)" id="fileInput" style="display: none;" />
     </div>
     <div *ngIf="fileName">
@@ -47,7 +52,8 @@
     </mat-form-field>
   
     <div style="text-align: center; margin-top: 20px;">
-      <button mat-flat-button color="primary" class="custom-button" style="padding: 10px 20px; background-color: #3f51b5; color: white; font-size: 16px;">Guardar</button>
+      <button mat-flat-button color="primary" class="custom-button" style="padding: 10px 20px; background-color: #c72828; color: white; font-size: 16px;">Guardar</button>
     </div>
   </form>
+</div>
   

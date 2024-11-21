@@ -1,5 +1,5 @@
-<div class="container" style="text-align: center;margin:2%">
-    <div><h1>Registro de Tendencia</h1></div>
+<div class="container" style="text-align: center;margin:2%" >
+    <div [ngClass]="{ 'edit-mode': edicion, 'register-mode': !edicion }"><div> <h1>{{ edicion ? 'Actualizar Tendencia' : 'Registrar Tendencia' }}</h1></div></div>
     <div>
       <form [formGroup]="form" (submit)=" insertar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">

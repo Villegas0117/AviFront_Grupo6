@@ -1,11 +1,11 @@
 .file-upload .btn-upload {
-      background-color: #3f51b5;
+      background-color: #ec3b3b;
       color: white;
       padding: 8px 16px;
       border-radius: 4px;
       cursor: pointer;
     }
     .file-upload .btn-upload:hover {
-      background-color: #303f9f;
+      background-color: #ec5151;
     }
     

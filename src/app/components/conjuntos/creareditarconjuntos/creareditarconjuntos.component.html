@@ -12,7 +12,7 @@
   "
 >
   <div style="margin-bottom: 20px">
-    <h1 style="font-size: 24px; color: #3f51b5">Registro de Conjuntos</h1>
+    <div [ngClass]="{ 'edit-mode': edicion, 'register-mode': !edicion }"> <h1>{{ edicion ? 'Actualizar Conjunto' : 'Registrar Conjunto' }}</h1></div>
   </div>
 
   <div>
